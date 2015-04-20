@@ -1,86 +1,75 @@
-html, body {
-  height: 100%;
-}
-
 body {
   background-image: url("/images/tarmac2.jpg");
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-header {
+.header {
   display: inline-block;
-  background-color: white;
   height: 3em;
   width: 100%;
-}
 
-h1 {
-  display: inline-block;
-  line-height: 3em;
-  font-size: 1em;
-  float: left;
-  margin-left: 1.5em;
-  font-weight: bold;
-}
-
-footer {
   background-color: white;
-  opacity: 0.8;
-
 }
 
-div {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+.logo {
+  height: 2em;
+  margin: 0.5em auto;
+  margin-left: 0.5em;
+  display: inline-block;
 }
 
-.errors {
-  background-color: #a94442;
+.session-buttons {
+  display: inline-block;
+  float: right;
+  margin-top: 0.75em;
+  margin-right: 1.5em;
+}
+
+.flash {
   height: 2em;
   width: 80%;
   margin: auto;
-  border: 0.1em #990000 solid;
-  opacity: 0.8;
   width: 75%;
-  border-radius: 0.5em;
   margin-top: 1em;
   padding-top: 1em;
+
+  opacity: 0.8;
+  border-radius: 0.5em;
 }
 
-.error_text {
+.flash--errors {
+  background-color: #a94442;
+  border: 0.1em #990000 solid;
+}
+
+.flash--notice {
+  background-color: #a1dbad;
+  border: 0.1em #3c763d solid;
+}
+
+.flash__text {
   opacity: 1;
   color: white;
   text-align: center;
 }
 
-.notice {
-  background-color: #a1dbad;
-  height: 2em;
-  width: 80%;
-  margin: auto;
-  border: 0.1em #3c763d solid;
-  opacity: 0.8;
-  width: 75%;
-  border-radius: 0.5em;
-  margin-top: 1em;
-  padding-top: 1em;
+.index-headline {
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  display: block;
 }
 
-.notice_text {
-  color: white;
+.join-form {
+  margin: auto;
   text-align: center;
 }
 
-.container {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -4em;
+.join-form__button {
+  font-size: 1.5em;
 }
 
-.footer, .push {
-  height: 4em;
-}
-
-.fill_ins {
+.user-forms {
   background-color: white;
   opacity: 0.8;
   border-radius: 1em;
@@ -91,41 +80,28 @@ div {
   margin: 3em auto;
 }
 
-  .fill_ins input {
-    display: block;
-    margin-bottom: 1em;
-    opacity: 1;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .fill_ins label {
-    visibility: hidden;
-  }
-
-  .fill_ins button {
-    margin: 1.5em;
-  }
-
-#logo {
-  display: inline-block;
-}
-
-#user_management {
-  display: inline-block;
-  float: right;
-  margin-top: 0.75em;
-  margin-right: 1.5em;
-}
-
-#logo_img {
+.user-forms input {
   display: block;
-  height: 2em;
-  margin: 0.5em auto;
-  margin-left: 0.5em;
+  margin-bottom: 1em;
+  opacity: 1;
+  margin: 0 auto;
+  text-align: center;
 }
 
-#logo_foot {
+.user-forms label {
+  visibility: hidden;
+}
+
+.user-forms button {
+  margin: 1.5em;
+}
+
+.footer {
+  background-color: white;
+  opacity: 0.8;
+}
+
+.footer__logo {
   display: block;
   height: 3.5em;
   margin: 0.5em auto;

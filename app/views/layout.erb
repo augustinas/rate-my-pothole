@@ -6,14 +6,12 @@
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
   </head>
   <body>
-    <div id='container'>
-      <%= erb :_header %>
-      <%= erb :_messages %>
-      <%= yield %>
-
-      <div class="push"></div>
-    </div>
-    <div class="footer">
+    <div id="wrapper">
+      <div id='container'>
+        <%= erb :_header %>
+        <%= erb :_flash %>
+        <%= yield %>
+      </div>
       <%= erb :_footer %>
     </div>
   </body>

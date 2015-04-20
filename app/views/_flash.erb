@@ -1,8 +1,8 @@
 <% if flash[:errors] %>
-  <div class="errors">
+  <div class="flash flash--errors">
     <ul>
       <% flash[:errors].each do |error| %>
-        <li class="error_text"><%= error %></li>
+        <li class="flash__text"><%= error %></li>
       <% end %>
     </ul>
   </div>
@@ -10,8 +10,8 @@
 
 
 <% if flash[:notice] %>
-  <div class="notice">
-    <div class="notice_text">
+  <div class="flash flash--notice">
+    <div class="flash__text">
       <%= flash[:notice] %>
     </div>
   </div>
