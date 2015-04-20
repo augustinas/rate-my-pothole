@@ -10,6 +10,9 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /user signup page/
+      '/users/new'
+
     when /the home\s?page/
       '/'
 
