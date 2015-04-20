@@ -45,8 +45,8 @@ I want users to be able to make one vote per location a day
 ##MVP Roadmap##
 
 MVP1 - User can log in, add a pothole in Liversedge. (Mon)
-  - Add 'Hello World'
-  - sign up (username, email, password, password confirmation) (hash password)
+  - Add 'Hello World' X
+  - sign up (username, email, password, password confirmation) (hash password) X
 
   - sign in (password authentication)
   - sign out

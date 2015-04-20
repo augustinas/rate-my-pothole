@@ -1,16 +1,7 @@
 require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
-
-env = ENV['RACK_ENV'] || 'development'
-
-DataMapper.setup(:default, "postgres://localhost/pothole_#{env}")
-
-require_relative './models/user'
-
-DataMapper.finalize
-
-DataMapper.auto_upgrade!
+require_relative 'data_mapper_setup'
 
 module UserManagement
 
