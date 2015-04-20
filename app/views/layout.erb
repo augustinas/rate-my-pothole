@@ -7,27 +7,15 @@
   </head>
   <body>
     <div id='container'>
-      <%= erb :header, layout: false %>
-
-      <% if @current_user %>
-        <div>Welcome, <%= User.first(id: session[:user_id]).username %>!</div>
-      <% end %>
-
-      <% if flash[:errors]  %>
-        <ul>
-      <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-        </ul>
-      <% end %>
-
+      <%= erb :_header %>
+      <%= erb :_messages %>
       <%= flash[:notice] %>
-
       <%= yield %>
+
       <div class="push"></div>
     </div>
     <div class="footer">
-      <%= erb :footer, layout: false %>
+      <%= erb :_footer %>
     </div>
   </body>
 </html>
