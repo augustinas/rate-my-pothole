@@ -64,3 +64,20 @@ MVP4b - MVP5 + Display votes in a time period and by town (Wed)
 Thurs - Advanced Features
 
 Fri - Polish
+
+-----------
+
+Extra Tasks:
+
+buttons on correct pages
+
+Signin unique and are there validations
+Footer stick to bottom
+
+
+welcome only if logged in
+rake tasks
+datamapper tests clean db after each
+
+
+

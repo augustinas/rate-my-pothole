@@ -5,12 +5,14 @@
         <li class="error_text"><%= error %></li>
       <% end %>
     </ul>
-    </div>
+  </div>
 <% end %>
 
 
-<div class="welcome">
-  <% if @current_user %>
-    <div>Welcome, <%= User.first(id: session[:user_id]).username %>!</div>
-  <% end %>
-</div>
+<% if flash[:notice] %>
+  <div class="notice">
+    <div class="notice_text">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% end %>

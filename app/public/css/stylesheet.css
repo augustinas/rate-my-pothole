@@ -51,6 +51,24 @@ div {
   text-align: center;
 }
 
+.notice {
+  background-color: #a1dbad;
+  height: 2em;
+  width: 80%;
+  margin: auto;
+  border: 0.1em #3c763d solid;
+  opacity: 0.8;
+  width: 75%;
+  border-radius: 0.5em;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+.notice_text {
+  color: white;
+  text-align: center;
+}
+
 .container {
   min-height: 100%;
   height: auto !important;
