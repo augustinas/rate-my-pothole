@@ -60,15 +60,6 @@ body {
   display: block;
 }
 
-.join-form {
-  margin: auto;
-  text-align: center;
-}
-
-.join-form__button {
-  font-size: 1.5em;
-}
-
 .user-forms {
   background-color: white;
   opacity: 0.8;
