@@ -5,8 +5,8 @@ require_relative 'data_mapper_setup'
 
 module UserManagement
 
-  def foo
-    @current_user = session[:user_id]
+  def current_user
+    User.first(id: session[:user_id])
   end
 
 end
@@ -20,7 +20,6 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
-    foo
     erb :index
   end
 

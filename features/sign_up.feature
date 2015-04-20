@@ -10,7 +10,7 @@ Feature: As a user
             And I fill in "email" with "angry@citizen.com"
             And I fill in "password" with "ra88it"
             And I fill in "password_confirmation" with "ra88it"
-            And I press "Sign up"
+            And I press "Register"
             Then I should see "Welcome, citizen1!"
             And I should be on the homepage
 
@@ -20,7 +20,7 @@ Feature: As a user
             And I fill in "email" with "angry@citizen.com"
             And I fill in "password" with "ra88it"
             And I fill in "password_confirmation" with "fox!"
-            And I press "Sign up"
+            And I press "Register"
             Then I should see "Sorry your passwords did not match!"
             And I should not see "Welcome, citizen1!"
             And I should be on user signup page

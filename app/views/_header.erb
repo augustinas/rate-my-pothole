@@ -4,11 +4,17 @@
   </div>
 
   <div id="user_management">
-    <form  action="/sessions/end" method="get" id="sign_out" class="sign_out">
-      <button>Sign out</button>
-    </form>
-    <form  action="/sessions/new" method="get" id="sign_in" class="sign_in">
-      <button>Sign in</button>
-    </form>
+    <% if current_user %>
+      <form  action="/sessions/end" method="get" id="sign_out" class="sign_out">
+        <button>Sign out</button>
+      </form>
+    <% else %>
+      <form  action="/sessions/new" method="get" id="sign_in" class="sign_in">
+        <button>Sign in</button>
+      </form>
+      <form action="/users/new">
+        <button>Sign up</button>
+      </form>
+    <% end %>
   </div>
 </header>

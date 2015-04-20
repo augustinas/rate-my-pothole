@@ -25,7 +25,7 @@ Given(/^I sign up$/) do
   step 'I fill in "email" with "angry@citizen.com"'
   step 'I fill in "password" with "ra88it"'
   step 'I fill in "password_confirmation" with "ra88it"'
-  step 'I press "Sign up"'
+  step 'I press "Register"'
 end
 
 Given(/^(?:|I )am on (.+)$/) do |page_name|
