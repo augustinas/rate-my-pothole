@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rate My Pothole</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+  </head>
+  <body>
+    <div id='container'>
+      <%= erb :header, layout: false %>
+      <%= yield %>
+      <div class="push"></div>
+    </div>
+    <div class="footer">
+      <%= erb :footer, layout: false %>
+    </div>
+  </body>
+</html>

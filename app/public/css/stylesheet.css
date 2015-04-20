@@ -1,0 +1,91 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url("/images/tarmac2.jpg");
+}
+
+header {
+  display: inline-block;
+  background-color: white;
+  height: 3em;
+  width: 100%;
+}
+
+h1 {
+  display: inline-block;
+  line-height: 3em;
+  font-size: 1em;
+  float: left;
+  margin-left: 1.5em;
+  font-weight: bold;
+}
+
+footer {
+  background-color: white;
+  opacity: 0.8;
+
+}
+
+.container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+.footer, .push {
+  height: 4em;
+}
+
+.fill_ins {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 1px;
+  text-align: center;
+  width: 75%;
+  margin: 3em auto;
+}
+
+  .fill_ins input {
+    display: block;
+    margin-bottom: 1em;
+    opacity: 1;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .fill_ins label {
+    visibility: hidden;
+  }
+
+  .fill_ins button {
+    margin: 1.5em;
+  }
+
+#logo {
+  display: inline-block;
+}
+
+#user_management {
+  display: inline-block;
+  float: right;
+  margin-top: 0.75em;
+  margin-right: 1.5em;
+}
+
+#logo_img {
+  display: block;
+  height: 2em;
+  margin: 0.5em auto;
+  margin-left: 0.5em;
+}
+
+#logo_foot {
+  display: block;
+  height: 3.5em;
+  margin: 0.5em auto;
+}

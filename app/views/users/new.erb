@@ -1,15 +1,13 @@
-<form action="/users" method="post" id="sign_up" class="sign_up">
-  <input name="username" type="text">
-  <input name="email" type="email">
-  <input name="password" type="password">
-  <input name="password_confirmation" type="password">
+<form action="/users" method="post" class="fill_ins">
+  <label for="new_username">Username</label>
+  <input name="username" type="text" id="new_username" placeholder="Choose a Username">
+  <label for="new_email">Email</label>
+  <input name="email" type="email" id="new_email" placeholder="Email">
+  <label for="new_password">Password</label>
+  <input name="password" type="password" id="new_password" placeholder="Password">
+  <label for="new_password_confirm">Confirm Password</label>
+  <input name="password_confirmation" type="password" id="new_password_confirm" placeholder="Confirm Password">
   <button>Sign up</button>
 </form>
-<form action="/sessions" method="post" id="sign_in" class="sign_in">
-  <input name="username" type="text">
-  <input name="password" type="password">
-  <button>Sign in</button>
-</form>
-<form  action="/sessions/end" method="post" id="sign_out" class="sign_out">
-  <button>Sign out</button>
-</form>
+
+
