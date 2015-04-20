@@ -35,6 +35,7 @@ class RateMyPothole < Sinatra::Base
                    )
     if user.save
       session[:user_id] = user.id
+      flash[:notice] = "Welcome, #{user.username}!"
       redirect to '/'
     else
       flash[:errors] = user.errors.full_messages
@@ -59,6 +60,7 @@ class RateMyPothole < Sinatra::Base
     user = User.authenticate(username, password)
     if user
       session[:user_id] = user.id
+      flash[:notice] = "Welcome, #{user.username}!"
       redirect to '/'
     else
       flash[:errors] = ["Username or password are incorrect"]
