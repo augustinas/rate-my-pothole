@@ -13,20 +13,10 @@
 <% end %>
 
 <% if @current_user %>
-  <div>Welcome, <%= @current_user %>!</div>
+  <div>Welcome, <%= User.first(id: session[:user_id]).username %>!</div>
 <% end %>
 
 <%= yield %>
 
 </body>
 </html>
-
-
-<!-- <form action="/sessions" method="post" id="sign_in" class="sign_in">
-  <input name="username" type="text">
-  <input name="password" type="password">
-  <button>Sign in</button>
-</form>
-<form  action="/sessions/end" method="post" id="sign_out" class="sign_out">
-  <button>Sign out</button>
-</form> -->

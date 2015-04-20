@@ -12,7 +12,7 @@ Feature: As a user
             And I fill in "password_confirmation" with "ra88it"
             And I press "Sign up"
             Then I should see "Welcome, citizen1!"
-            And I am on the homepage
+            And I should be on the homepage
 
   Scenario: User cannot signup with mismatching passwords
             Given I am on user signup page
@@ -23,4 +23,4 @@ Feature: As a user
             And I press "Sign up"
             Then I should see "Sorry your passwords did not match!"
             And I should not see "Welcome, citizen1!"
-            And I am on user signup page
+            And I should be on user signup page

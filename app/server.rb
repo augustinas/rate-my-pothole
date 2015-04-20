@@ -44,12 +44,12 @@ class RateMyPothole < Sinatra::Base
                     password_confirmation: params[:password_confirmation]
                    )
     if user.save
-      session[:user_id] = params[:username]
+      session[:user_id] = user.id
+      redirect to '/'
     else
       flash[:errors] = user.errors.full_messages
+      redirect to '/users/new'
     end
-
-    redirect to '/'
   end
 
   # start the server if ruby file executed directly
