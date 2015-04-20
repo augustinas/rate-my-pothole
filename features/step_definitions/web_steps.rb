@@ -16,6 +16,16 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given(/^I sign up$/) do
+  step 'I am on the homepage'
+  step 'I press "Sign up"'
+  step 'I fill in "username" with "citizen1"'
+  step 'I fill in "email" with "angry@citizen.com"'
+  step 'I fill in "password" with "ra88it"'
+  step 'I fill in "password_confirmation" with "ra88it"'
+  step 'I press "Sign up"'
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end

@@ -13,13 +13,15 @@
         <div>Welcome, <%= User.first(id: session[:user_id]).username %>!</div>
       <% end %>
 
-      <% if flash[:errors] %>
+      <% if flash[:errors]  %>
         <ul>
       <% flash[:errors].each do |error| %>
         <li><%= error %></li>
       <% end %>
         </ul>
       <% end %>
+
+      <%= flash[:notice] %>
 
       <%= yield %>
       <div class="push"></div>

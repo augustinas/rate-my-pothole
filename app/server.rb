@@ -51,6 +51,31 @@ class RateMyPothole < Sinatra::Base
       redirect to '/users/new'
     end
   end
+
+  get '/sessions/end' do
+    username = User.first(id: session[:user_id]).username
+    session[:user_id] = nil
+    flash[:notice] = "Goodbye, #{username}"
+    redirect to '/'
+  end
+
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions' do
+    username = params[:username]
+    password = params[:password]
+    user = User.authenticate(username, password)
+    if user
+      session[:user_id] = user.id
+      redirect to '/'
+    else
+      flash[:errors] = ["Username or password are incorrect"]
+      erb :'sessions/new'
+    end
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 
