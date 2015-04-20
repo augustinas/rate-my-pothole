@@ -68,16 +68,16 @@ Fri - Polish
 -----------
 
 Extra Tasks:
-
-buttons on correct pages
-
+  done:
+rake tasks/
+datamapper tests clean db after each/
+buttons on correct pages /
+  to do:
+Change tests to get rid of "hello world" text
 Signin unique and are there validations
 Footer stick to bottom
-
-
 welcome only if logged in
-rake tasks
-datamapper tests clean db after each
+
 
 
 
