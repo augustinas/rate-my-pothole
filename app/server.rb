@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'data_mapper'
+require 'rack-flash'
 
 env = ENV['RACK_ENV'] || 'development'
 
@@ -22,6 +23,7 @@ end
 class RateMyPothole < Sinatra::Base
 
   enable :sessions
+  use Rack::Flash
   set :session_secret, 'top secret'
 
   helpers UserManagement
@@ -36,10 +38,17 @@ class RateMyPothole < Sinatra::Base
   end
 
   post '/users' do
-    session[:user_id] = params[:username]
-    User.create(username: params[:username],          email: params[:email],
-                password: params[:password]
-               )
+    user = User.new(username: params[:username],
+                    email: params[:email],
+                    password: params[:password],
+                    password_confirmation: params[:password_confirmation]
+                   )
+    if user.save
+      session[:user_id] = params[:username]
+    else
+      flash[:errors] = user.errors.full_messages
+    end
+
     redirect to '/'
   end
 
