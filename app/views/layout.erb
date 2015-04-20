@@ -8,6 +8,19 @@
   <body>
     <div id='container'>
       <%= erb :header, layout: false %>
+
+      <% if @current_user %>
+        <div>Welcome, <%= User.first(id: session[:user_id]).username %>!</div>
+      <% end %>
+
+      <% if flash[:errors] %>
+        <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+        </ul>
+      <% end %>
+
       <%= yield %>
       <div class="push"></div>
     </div>
