@@ -28,6 +28,29 @@ footer {
 
 }
 
+div {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.errors {
+  background-color: #a94442;
+  height: 2em;
+  width: 80%;
+  margin: auto;
+  border: 0.1em #990000 solid;
+  opacity: 0.8;
+  width: 75%;
+  border-radius: 0.5em;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+.error_text {
+  opacity: 1;
+  color: white;
+  text-align: center;
+}
+
 .container {
   min-height: 100%;
   height: auto !important;

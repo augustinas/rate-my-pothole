@@ -1,0 +1,16 @@
+<% if flash[:errors] %>
+  <div class="errors">
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li class="error_text"><%= error %></li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>
+
+
+<div class="welcome">
+  <% if @current_user %>
+    <div>Welcome, <%= User.first(id: session[:user_id]).username %>!</div>
+  <% end %>
+</div>
