@@ -50,12 +50,16 @@ MVP1 - User can log in, add a pothole in Liversedge. (Mon)
 
   - sign in (password authentication)
   - sign out
-  -signed in user can post pothole (name, location)
-
 
 MVP2 - MVP1 + User can place a vote and the page doesn't refresh(Tue)
 
+  - signed in user can post pothole (name, location, datetime(problems aticipated))
+  - potholes diplayed on homepage
+  - place a vote on the pothole that has been added
+  - make an ajax call to vote and update page
+
 MVP3 - MVP2 + potholes are displayed in rank order(Tue)
+
 
 MVP4a - MVP3 + Add functionality to show pothole votes on a map (Wed)
 
@@ -68,15 +72,19 @@ Fri - Polish
 -----------
 
 Extra Tasks:
-  done:
-rake tasks/
-datamapper tests clean db after each/
-buttons on correct pages /
-  to do:
-Change tests to get rid of "hello world" text
-Signin unique and are there validations
-Footer stick to bottom
-welcome only if logged in
+
+#### DONE:
+
+* Rake tasks
+* Datamapper tests clean db after each
+* Buttons on correct pages
+
+#### TO DO:
+
+* Change tests to get rid of "hello world" text
+* Signin unique and are there validations
+* Footer stick to bottom
+* Welcome only if logged in
 
 
 
