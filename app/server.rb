@@ -81,7 +81,7 @@ class RateMyPothole < Sinatra::Base
     redirect to '/'
   end
 
-  post '/upvote' do
+  post '/upvote/:pothole' do
     vote = Vote.new(user_id: session[:user_id],
                     pothole_id: params[:pothole],
                     score: 1)
@@ -97,6 +97,12 @@ class RateMyPothole < Sinatra::Base
     Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
         sum += vote.score
     end
+  end
+
+  def voted?(user_id, pothole)
+    user_votes = User.first(id: user_id).votes
+    return true if user_votes.first(pothole_id: pothole.id)
+    false
   end
 
   # start the server if ruby file executed directly

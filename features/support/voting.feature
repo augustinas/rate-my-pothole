@@ -11,5 +11,4 @@ I'd like to vote on them.
             Given I am on the homepage
             And I press "upvote"
             Then I should see "Votes : 1"
-            And I press "upvote"
-            Then I should see "You have already upvoted this pothole!"
+            And I should not see "upvote"

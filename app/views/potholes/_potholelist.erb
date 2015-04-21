@@ -2,9 +2,10 @@
   <% @potholes.each do |pothole| %>
     <div class="pothole-list__item">
       <%= pothole.location %>
-      <form method="post" action="/upvote">
-        <input name="pothole" value="<%= pothole.id %>">
+      <form method="post" action="/upvote/<%= pothole.id %>">
+        <% unless session[:user_id] && voted?(session[:user_id], pothole) %>
       <button>upvote</button>
+        <% end %>
       </form>
       <div class="votes">Votes : <%= total_score(pothole) %></div>
     </div>

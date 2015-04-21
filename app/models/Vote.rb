@@ -2,8 +2,8 @@ class Vote
 
   include DataMapper::Resource
 
-  belongs_to :user, key: true
-  belongs_to :pothole, key: true
+  belongs_to :user
+  belongs_to :pothole
 
   property :id, Serial
   property :score, Integer
