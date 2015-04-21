@@ -1,5 +1,7 @@
 <div class="pothole-list">
-  <div class="pothole-list__item">
-    <%= @street_name %>
-  </div>
+  <% @potholes.each do |pothole| %>
+    <div class="pothole-list__item">
+      <%= pothole.location %>
+    </div>
+  <% end %>
 </div>

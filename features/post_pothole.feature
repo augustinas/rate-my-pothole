@@ -18,5 +18,5 @@ Feature: User can post a pothole
     Given I post a pothole on "Leeds Rd"
     And I post a pothole on "Another Rd"
     Then I should see "Pothole reported on Another Rd"
-    And I see "Leeds Rd" within ".pothole-list__item"
-    And I see "Another Rd" within ".pothole-list__item"
+    And I see "Leeds Rd" within ".pothole-list"
+    And I see "Another Rd" within ".pothole-list"

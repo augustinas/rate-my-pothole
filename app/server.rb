@@ -20,6 +20,7 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
+    @potholes = Pothole.all
     erb :index
   end
 
@@ -73,9 +74,10 @@ class RateMyPothole < Sinatra::Base
   end
 
   post '/potholes' do
-    @street_name = params[:street_name]
-    flash[:notice] = "Pothole reported on #{@street_name}"
-    erb :index
+    street_name = params[:street_name]
+    @pothole = Pothole.create(location: street_name)
+    flash[:notice] = "Pothole reported on #{street_name}"
+    redirect to '/'
   end
 
   # start the server if ruby file executed directly
