@@ -20,7 +20,8 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
-    @potholes = Pothole.all
+    @potholes = Pothole.all.sort { |x, y| total_score(y) <=> total_score(x) }
+        p @potholes
     erb :index
   end
 
