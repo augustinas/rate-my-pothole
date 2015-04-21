@@ -1,6 +1,7 @@
-
-<form action="/potholes/new">
-  <button>Report Pothole</button>
-</form>
+<% if current_user %>
+  <form action="/potholes/new">
+    <button>Report Pothole</button>
+  </form>
+<% end %>
 
 <%= erb :'potholes/_potholelist' %>

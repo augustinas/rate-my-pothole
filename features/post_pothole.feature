@@ -20,3 +20,9 @@ Feature: User can post a pothole
     Then I should see "Pothole reported on Another Rd"
     And I see "Leeds Rd" within ".pothole-list"
     And I see "Another Rd" within ".pothole-list"
+
+  Scenario: Non-registered users cannot post potholes
+    When I press "Sign out"
+    Then I should not see "Report Pothole"
+    When I go to report potholes page
+    Then I should not see "Report"
