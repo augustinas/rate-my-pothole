@@ -2,13 +2,20 @@
 
 ENV['RACK_ENV'] = 'test'
 
-# Selenium::WebDriver::Firefox::Binary.path= (Selenium::WebDriver::Error::WebDriverError)
-
 require File.join(File.dirname(__FILE__), '..', '..', 'app/server.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
+require 'capybara-webkit'
+
+# Chrome Setup for Selenium
+# Capybara.register_driver :chrome do |app|
+#   Capybara::Selenium::Driver.new(app, browser: :chrome)
+# end
+# Capybara.javascript_driver = :chrome
+
+Capybara.javascript_driver = :webkit
 
 Capybara.app = RateMyPothole
 

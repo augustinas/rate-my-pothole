@@ -9,6 +9,7 @@ gem 'dm-postgres-adapter'
 gem 'sinatra-partial'
 gem 'rack-flash3'
 gem 'selenium-webdriver'
+gem 'capybara-webkit'
 
 group :development do
   gem 'thin'
