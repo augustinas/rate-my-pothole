@@ -10,7 +10,7 @@ gem 'sinatra-partial'
 gem 'rack-flash3'
 
 group :development do
-  gem 'thin'
+  # gem 'thin'
 end
 
 group :test do
