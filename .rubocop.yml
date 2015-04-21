@@ -68,3 +68,7 @@ Style/Semicolon:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-semicolon
   Enabled: false
   AllowAsExpressionSeparator: false
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20

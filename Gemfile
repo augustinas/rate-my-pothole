@@ -12,7 +12,7 @@ gem 'selenium-webdriver'
 gem 'capybara-webkit'
 
 group :development do
-  gem 'thin'
+  # gem 'thin'
 end
 
 group :test do

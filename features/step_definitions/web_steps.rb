@@ -28,6 +28,13 @@ Given(/^I sign up$/) do
   step 'I press "Register"'
 end
 
+Given(/^I post a pothole on "([^"]*)"$/) do |street|
+  step 'I am on the homepage'
+  step 'I press "Report Pothole"'
+  step "I fill in \"street_name\" with \"#{street}\""
+  step 'I press "Report"'
+end
+
 Given(/^(?:|I )am on (.+)$/) do |page_name|
   visit path_to(page_name)
 end
@@ -128,6 +135,10 @@ Then(
       assert page.has_content?(text)
     end
   end
+end
+
+Then(/^I see "([^"]*)" within "([^"]*)"$/) do |text, selector|
+  expect(find(selector)).to have_content(text)
 end
 
 Then(

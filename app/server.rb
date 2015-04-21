@@ -20,6 +20,7 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
+    @potholes = Pothole.all
     erb :index
   end
 
@@ -66,6 +67,17 @@ class RateMyPothole < Sinatra::Base
       flash[:errors] = ["Username or password are incorrect"]
       erb :'sessions/new'
     end
+  end
+
+  get '/potholes/new' do
+    erb :'potholes/new'
+  end
+
+  post '/potholes' do
+    street_name = params[:street_name]
+    @pothole = Pothole.create(location: street_name)
+    flash[:notice] = "Pothole reported on #{street_name}"
+    redirect to '/'
   end
 
   # start the server if ruby file executed directly

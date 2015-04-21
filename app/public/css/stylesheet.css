@@ -3,6 +3,11 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
+button {
+  width: 10em;
+  height: 2em;
+}
+
 /*Header*/
 
 .header {
@@ -19,7 +24,7 @@ body {
   display: inline-block;
 }
 
-/*User buttons*/
+/*Buttons*/
 
 .user-buttons {
   float: right;
@@ -29,6 +34,11 @@ body {
 
 .user-buttons__button {
   display: inline-block;
+}
+
+.report-pothole__button {
+  margin: 1.5em auto;
+  display: table;
 }
 
 /*Flash*/
@@ -63,7 +73,7 @@ body {
 
 /*Signup/Signin*/
 
-.user-forms {
+.user-forms, .pothole-list__item, .pothole-form {
   background-color: white;
   opacity: 0.8;
   border-radius: 1em;
@@ -74,7 +84,13 @@ body {
   margin: 3em auto;
 }
 
-.user-forms__input {
+.pothole-list__item {
+  padding: 1em 2em;
+  width: 40%;
+  text-align: left;
+}
+
+.user-forms input {
   display: block;
   margin-bottom: 1em;
   opacity: 1;
@@ -88,9 +104,9 @@ body {
 }
 
 .user-forms button {
-  margin-bottom: 1em;
-  display: block;
-  margin: auto;
+ /* margin-bottom: 1em;*/
+  /*display: block;*/
+  margin: 1.5em auto;
 }
 
 .user-forms__input--confirm {
@@ -98,7 +114,6 @@ body {
 }
 
 .user-forms__alert {
-  margin-bottom: 1em;
   font-size: 0.75em;
   color: #700000;
 }

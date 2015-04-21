@@ -1,2 +1,7 @@
+<% if current_user %>
+  <form class="report-pothole" action="/potholes/new">
+    <button class="report-pothole__button">Report Pothole</button>
+  </form>
+<% end %>
 
-
+<%= erb :'potholes/_potholelist' %>
