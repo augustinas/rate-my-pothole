@@ -76,8 +76,27 @@ class RateMyPothole < Sinatra::Base
   post '/potholes' do
     street_name = params[:street_name]
     @pothole = Pothole.create(location: street_name)
+    p total_score(@pothole)
     flash[:notice] = "Pothole reported on #{street_name}"
     redirect to '/'
+  end
+
+  post '/upvote' do
+    vote = Vote.new(user_id: session[:user_id],
+                    pothole_id: params[:pothole],
+                    score: 1)
+    if vote.save
+      redirect '/'
+    else
+      flash[:errors] = vote.errors.full_messages
+      redirect '/'
+    end
+  end
+
+  def total_score(pothole)
+    Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
+        sum += vote.score
+    end
   end
 
   # start the server if ruby file executed directly

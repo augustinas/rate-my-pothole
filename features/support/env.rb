@@ -9,11 +9,18 @@ require 'capybara/cucumber'
 require 'rspec'
 require 'capybara-webkit'
 
-# Chrome Setup for Selenium
+DataMapper.auto_upgrade!
+
+# # Chrome Setup for Selenium (Keep for Dan)
 # Capybara.register_driver :chrome do |app|
 #   Capybara::Selenium::Driver.new(app, browser: :chrome)
 # end
 # Capybara.javascript_driver = :chrome
+
+Capybara.server do |app, port|
+  require 'rack/handler/thin'
+  Rack::Handler::Thin.run(app, :Port => port)
+end
 
 Capybara.javascript_driver = :webkit
 

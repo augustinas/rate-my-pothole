@@ -28,6 +28,16 @@ Given(/^I sign up$/) do
   step 'I press "Register"'
 end
 
+Given(/^I post a pothole$/) do
+  step 'I am on the homepage'
+  step 'I press "Report Pothole"'
+  step 'I fill in "street_name" with "Leeds Rd"'
+  step 'I press "Report"'
+  step 'I should see "Pothole reported on Leeds Rd"'
+  step 'I see "Leeds Rd" within ".pothole-list__item"'
+end
+
+
 Given(/^I post a pothole on "([^"]*)"$/) do |street|
   step 'I am on the homepage'
   step 'I press "Report Pothole"'

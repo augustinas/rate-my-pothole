@@ -2,6 +2,11 @@
   <% @potholes.each do |pothole| %>
     <div class="pothole-list__item">
       <%= pothole.location %>
+      <form method="post" action="/upvote">
+        <input name="pothole" value="<%= pothole.id %>">
+      <button>upvote</button>
+      </form>
+      <div class="votes">Votes : <%= total_score(pothole) %></div>
     </div>
   <% end %>
 </div>

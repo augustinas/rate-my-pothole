@@ -4,6 +4,9 @@ class User
 
   include DataMapper::Resource
 
+  has n, :votes
+  has n, :potholes, through: :votes
+
   property :id, Serial
   property :username, String, unique: true, message: 'Sorry, This username already exists!'
   property :email, String, unique: true, message: 'Sorry, A user with this email already exists!'
