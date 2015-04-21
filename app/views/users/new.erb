@@ -1,3 +1,13 @@
+<script>
+  $(document).ready(function() {
+    $('#new_password_confirm').focus(function(){
+      if ($('#new_password').val() !== $('#new_password_confirm').val()) {
+        $('#alert').text("Passwords Don't Match");
+      };
+    });
+  });
+</script>
+<div id="alert"></div>
 <form action="/users" method="post" class="user-forms">
   <label for="new_username">Username</label>
   <input name="username" type="text" id="new_username" placeholder="Choose a Username">

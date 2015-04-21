@@ -2,6 +2,8 @@
 
 ENV['RACK_ENV'] = 'test'
 
+# Selenium::WebDriver::Firefox::Binary.path= (Selenium::WebDriver::Error::WebDriverError)
+
 require File.join(File.dirname(__FILE__), '..', '..', 'app/server.rb')
 
 require 'capybara'

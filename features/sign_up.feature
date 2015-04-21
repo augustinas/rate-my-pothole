@@ -14,6 +14,7 @@ Feature: A user can sign up
     Then I should see "Welcome, citizen1!"
     And I should be on the homepage
 
+  @javascript
   Scenario: User cannot signup with mismatching passwords
     Given I am on user signup page
     And I fill in "username" with "citizen1"
@@ -26,6 +27,7 @@ Feature: A user can sign up
     And I should not see "Welcome, citizen1!"
     And I should be on user signup page
 
+  @javascript
   Scenario: User cannot signup when password is not supplied
     Given I am on user signup page
     And I fill in "username" with "citizen1"
@@ -36,6 +38,7 @@ Feature: A user can sign up
     And I should not see "Welcome, citizen1!"
     And I should be on user signup page
 
+  @javascript
   Scenario: User cannot signup with an existing username
     Given I sign up
     And I press "Sign out"
