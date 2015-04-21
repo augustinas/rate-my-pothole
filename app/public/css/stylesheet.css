@@ -3,11 +3,12 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
+/*Header*/
+
 .header {
-  display: inline-block;
   height: 3em;
   width: 100%;
-
+  display: inline-block;
   background-color: white;
 }
 
@@ -18,16 +19,19 @@ body {
   display: inline-block;
 }
 
-.session-buttons {
-  display: inline-block;
+/*User buttons*/
+
+.user-buttons {
   float: right;
   margin-top: 0.75em;
   margin-right: 1.5em;
 }
 
-.user_buttons {
+.user-buttons__button {
   display: inline-block;
 }
+
+/*Flash*/
 
 .flash {
   height: 2em;
@@ -57,12 +61,16 @@ body {
   text-align: center;
 }
 
+/*Headline*/
+
 .index-headline {
   text-align: center;
   font-size: 4em;
   color: white;
   display: block;
 }
+
+/*Signup/Signin*/
 
 .user-forms {
   background-color: white;
@@ -90,6 +98,8 @@ body {
 .user-forms button {
   margin: 1.5em;
 }
+
+/*footer*/
 
 .footer {
   background-color: white;

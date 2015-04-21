@@ -3,17 +3,17 @@
       <img class="logo" src="/images/logo.png">
     </a>
 
-  <div class="session-buttons">
+  <div class="user-buttons">
     <% if current_user %>
       <span><%= current_user.username %></span>
-      <form  action="/sessions/end" method="get" id="sign_out" class="sign_out user_buttons">
+      <form  action="/sessions/end" method="get" id="sign_out" class="user-buttons__button">
         <button>Sign out</button>
       </form>
     <% else %>
-      <form  action="/sessions/new" method="get" id="sign_in" class="sign_in user_buttons">
+      <form  action="/sessions/new" method="get" id="sign_in" class="user-buttons__button">
         <button>Sign in</button>
       </form>
-      <form action="/users/new" method="get" id="sign_up" class="sign_up user_buttons">
+      <form action="/users/new" method="get" id="sign_up" class="user-buttons__button">
         <button>Sign up</button>
       </form>
     <% end %>
