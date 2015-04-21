@@ -20,6 +20,7 @@ Feature: A user can sign up
     And I fill in "email" with "angry@citizen.com"
     And I fill in "password" with "ra88it"
     And I fill in "password_confirmation" with "fox!"
+    And I should see "Passwords Don't Match"
     And I press "Register"
     Then I should see "Sorry your passwords did not match!"
     And I should not see "Welcome, citizen1!"
