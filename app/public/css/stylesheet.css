@@ -25,6 +25,10 @@ body {
   margin-right: 1.5em;
 }
 
+.user_buttons {
+  display: inline-block;
+}
+
 .flash {
   height: 2em;
   width: 80%;

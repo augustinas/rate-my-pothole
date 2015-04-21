@@ -5,15 +5,17 @@
 
   <div class="session-buttons">
     <% if current_user %>
-      <form  action="/sessions/end" method="get" id="sign_out" class="sign_out">
+      <span><%= current_user.username %></span>
+      <form  action="/sessions/end" method="get" id="sign_out" class="sign_out user_buttons">
         <button>Sign out</button>
       </form>
     <% else %>
-      <form  action="/sessions/new" method="get" id="sign_in" class="sign_in">
+      <form  action="/sessions/new" method="get" id="sign_in" class="sign_in user_buttons">
         <button>Sign in</button>
       </form>
-      <form action="/users/new">
+      <form action="/users/new" method="get" id="sign_up" class="sign_up user_buttons">
         <button>Sign up</button>
       </form>
     <% end %>
+  </div>
 </header>
