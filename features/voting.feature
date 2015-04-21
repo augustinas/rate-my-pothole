@@ -27,3 +27,9 @@ I'd like to vote on them.
             And I press "downvote"
             Then I should see "Votes : 0"
             And I should not see "downvote"
+
+  Scenario: Potholes displayed by vote order
+            Given I am on the homepage
+            And I post a pothole on "Another Rd"
+            And I press "upvote" on pothole "1"
+            Then "Leeds Rd" should be before "Another Rd"

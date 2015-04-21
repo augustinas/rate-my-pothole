@@ -76,7 +76,6 @@ class RateMyPothole < Sinatra::Base
   post '/potholes' do
     street_name = params[:street_name]
     @pothole = Pothole.create(location: street_name)
-    p total_score(@pothole)
     flash[:notice] = "Pothole reported on #{street_name}"
     redirect to '/'
   end
@@ -111,9 +110,15 @@ class RateMyPothole < Sinatra::Base
     end
   end
 
-  def voted?(user_id, pothole)
+  def upvoted?(user_id, pothole)
     user_votes = User.first(id: user_id).votes
-    return true if user_votes.first(pothole_id: pothole.id)
+    return true if user_votes.first(pothole_id: pothole.id, score: 1)
+    false
+  end
+
+  def downvoted?(user_id, pothole)
+    user_votes = User.first(id: user_id).votes
+    return true if user_votes.first(pothole_id: pothole.id, score: -1)
     false
   end
 

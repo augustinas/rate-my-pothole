@@ -26,3 +26,4 @@ Feature: User can post a pothole
     Then I should not see "Report Pothole"
     When I go to report potholes page
     Then I should not see "Report"
+

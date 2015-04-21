@@ -37,6 +37,13 @@ Given(/^I post a pothole$/) do
   step 'I see "Leeds Rd" within ".pothole-list__item"'
 end
 
+Then(/^"([^"]*)" should be before "([^"]*)"$/) do |arg1, arg2|
+  arg1.should appear_before(arg2)
+end
+
+Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|
+  find("pothole-list__item__#{arg1}-button--#{arg2}")
+end
 
 Given(/^I post a pothole on "([^"]*)"$/) do |street|
   step 'I am on the homepage'

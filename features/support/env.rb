@@ -8,6 +8,7 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 require 'capybara-webkit'
+require_relative 'rspec_before_after_helper'
 
 DataMapper.auto_upgrade!
 
