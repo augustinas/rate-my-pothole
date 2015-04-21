@@ -2,7 +2,8 @@
   $(document).ready(function() {
     $('#new_password_confirm').focus(function(){
       if ($('#new_password').val() !== $('#new_password_confirm').val()) {
-        $('#alert').text("Passwords Don't Match");
+        // $('#new_password_confirm').css({"background-color": "#FF8080", "color": "white"})
+      $('#alert').text("Passwords Don't Match");
       };
     });
   });
@@ -10,16 +11,16 @@
 
 <form action="/users" method="post" class="user-forms">
   <label for="new_username">Username</label>
-  <input name="username" type="text" id="new_username" placeholder="Choose a Username">
+  <input name="username" type="text" id="new_username" placeholder="Choose a Username" class="user-forms__input">
 
   <label for="new_email">Email</label>
-  <input name="email" type="email" id="new_email" placeholder="Email">
+  <input name="email" type="email" id="new_email" placeholder="Email" class="user-forms__input">
 
   <label for="new_password">Password</label>
-  <input name="password" type="password" id="new_password" placeholder="Password">
-<div id="alert"></div>
+  <input name="password" type="password" id="new_password" placeholder="Password" class="user-forms__input">
   <label for="new_password_confirm">Confirm Password</label>
-  <input name="password_confirmation" type="password" id="new_password_confirm" placeholder="Confirm Password">
+  <input name="password_confirmation" type="password" id="new_password_confirm" placeholder="Confirm Password" class="user-forms__input user-forms__input--confirm">
+  <div id="alert" class="user-forms__alert"></div>
 
   <button>Register</button>
 

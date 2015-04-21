@@ -10,7 +10,8 @@ Feature: A user can sign up
     And I fill in "email" with "angry@citizen.com"
     And I fill in "password" with "ra88it"
     And I fill in "password_confirmation" with "ra88it"
-    And I press "Register"
+    Then I should not see "Sorry your passwords did not match!"
+    When I press "Register"
     Then I should see "Welcome, citizen1!"
     And I should be on the homepage
 

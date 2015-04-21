@@ -74,7 +74,7 @@ body {
   margin: 3em auto;
 }
 
-.user-forms input {
+.user-forms__input {
   display: block;
   margin-bottom: 1em;
   opacity: 1;
@@ -84,10 +84,23 @@ body {
 
 .user-forms label {
   visibility: hidden;
+  display: block;
 }
 
 .user-forms button {
-  margin: 1.5em;
+  margin-bottom: 1em;
+  display: block;
+  margin: auto;
+}
+
+.user-forms__input--confirm {
+  margin-bottom: 1em;
+}
+
+.user-forms__alert {
+  margin-bottom: 1em;
+  font-size: 0.75em;
+  color: #700000;
 }
 
 /*footer*/

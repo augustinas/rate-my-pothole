@@ -84,7 +84,6 @@ Extra Tasks:
 
 * Signin unique and are there validations
 * Footer stick to bottom
-* Welcome only if logged in
 
 
 
