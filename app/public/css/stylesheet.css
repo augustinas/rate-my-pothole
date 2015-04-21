@@ -61,15 +61,6 @@ body {
   text-align: center;
 }
 
-/*Headline*/
-
-.index-headline {
-  text-align: center;
-  font-size: 4em;
-  color: white;
-  display: block;
-}
-
 /*Signup/Signin*/
 
 .user-forms {

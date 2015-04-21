@@ -5,7 +5,6 @@ Feature: A user can sign up
 
   Scenario: Can sign up
     Given I am on the homepage
-    Then I should see "Hello World"
     When I press "Sign up"
     And I fill in "username" with "citizen1"
     And I fill in "email" with "angry@citizen.com"

@@ -78,10 +78,10 @@ Extra Tasks:
 * Rake tasks
 * Datamapper tests clean db after each
 * Buttons on correct pages
+* Change tests to get rid of "hello world" text
 
 #### TO DO:
 
-* Change tests to get rid of "hello world" text
 * Signin unique and are there validations
 * Footer stick to bottom
 * Welcome only if logged in
