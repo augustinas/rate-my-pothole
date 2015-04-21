@@ -68,6 +68,16 @@ class RateMyPothole < Sinatra::Base
     end
   end
 
+  get '/potholes/new' do
+    erb :'potholes/new'
+  end
+
+  post '/potholes' do
+    @street_name = params[:street_name]
+    flash[:notice] = "Pothole reported on #{@street_name}"
+    erb :index
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 

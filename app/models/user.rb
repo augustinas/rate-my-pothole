@@ -8,7 +8,8 @@ class User
   property :username, String
   property :email, String
   property :password_digest, Text, required: true,
-                                   message: 'Sorry, there was something wrong with your password!'
+                                   message: 'Sorry, there was something'\
+                                     ' wrong with your password!'
 
   attr_reader :password
   attr_accessor :password_confirmation
@@ -17,10 +18,9 @@ class User
                             message: 'Sorry your passwords did not match!'
 
   def password=(password)
-    unless password.empty?
-      @password = password
-      self.password_digest = BCrypt::Password.create(password)
-    end
+    return nil if password.empty?
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def self.authenticate(username, password)
