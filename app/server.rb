@@ -93,6 +93,18 @@ class RateMyPothole < Sinatra::Base
     end
   end
 
+  post '/downvote/:pothole' do
+    vote = Vote.new(user_id: session[:user_id],
+                    pothole_id: params[:pothole],
+                    score: -1)
+    if vote.save
+      redirect '/'
+    else
+      flash[:errors] = vote.errors.full_messages
+      redirect '/'
+    end
+  end
+
   def total_score(pothole)
     Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
         sum += vote.score
