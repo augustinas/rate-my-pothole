@@ -39,7 +39,7 @@ class RateMyPothole < Sinatra::Base
       redirect to '/'
     else
       flash[:errors] = user.errors.full_messages
-      redirect to '/users/new'
+      redirect '/users/new'
     end
   end
 

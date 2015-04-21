@@ -5,8 +5,8 @@ class User
   include DataMapper::Resource
 
   property :id, Serial
-  property :username, String
-  property :email, String
+  property :username, String, unique: true, message: 'Sorry, This username already exists!'
+  property :email, String, unique: true, message: 'Sorry, A user with this email already exists!'
   property :password_digest, Text, required: true,
                                    message: 'Sorry, there was something wrong with your password!'
 
