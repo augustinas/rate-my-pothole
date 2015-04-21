@@ -1,7 +1,7 @@
 <% if current_user %>
-  <form action="/potholes" method="post">
+  <form class="user-forms" action="/potholes" method="post">
     <label for="street-name">Street Name</label>
-    <input id="street-name" type="text" name="street_name">
+    <input id="street-name" type="text" name="street_name" placeholder="Street Name">
     <button>Report</button>
   </form>
 <% end %>
