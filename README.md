@@ -84,8 +84,8 @@ Extra Tasks:
 
 * Signin unique and are there validations
 * Footer stick to bottom
-
-
+only if logged in
+* Style posts
 
 
 
