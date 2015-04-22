@@ -3,9 +3,13 @@ rvm:
   - 2.2.1
 gemfile:
   - Gemfile
+before_install:
+  - sudo apt-get install -qq postgresql-server-dev-9.4
 before_script:
   - psql -c 'CREATE DATABASE pothole_test;' -U postgres
-  - psql -c 'CREATE DATABASE pothole_development;' -U postgres
+script:
+  - xvfb-run -a bundle exec spec
+  - RACK_ENV=test bundle exec cucumber
 branches:
   only:
     - master
