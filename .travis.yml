@@ -1,13 +1,17 @@
-language: ruby
-rvm:
-  - 2.2.1
+
+rvm: '2.2.1'
+
 before_install:
   - sudo apt-get update -qq
+  - sudo apt-get install -qq postgresql-server-dev-9.4
+
 before_script:
-  - psql -c 'CREATE DATABASE pothole_test;' -U postgres
+  - psql -c 'create database chitter_test;' -U postgres
+
 script:
-  - xvfb-run -a bundle exec spec
-  - RACK_ENV=test bundle exec cucumber
+  - RACK_ENV=test bundle exec rake auto_upgrade
+  - bundle exec cucumber
+  - bundle exec rspec spec
 branches:
   only:
     - master
