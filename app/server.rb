@@ -106,7 +106,7 @@ class RateMyPothole < Sinatra::Base
 
   def total_score(pothole)
     Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
-        sum += vote.score
+      sum += vote.score
     end
   end
 

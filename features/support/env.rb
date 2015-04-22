@@ -20,7 +20,7 @@ DataMapper.auto_upgrade!
 
 Capybara.server do |app, port|
   require 'rack/handler/thin'
-  Rack::Handler::Thin.run(app, :Port => port)
+  Rack::Handler::Thin.run(app, Port: port)
 end
 
 Capybara.javascript_driver = :webkit

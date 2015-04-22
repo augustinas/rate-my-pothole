@@ -42,7 +42,7 @@ Then(/^"([^"]*)" should be before "([^"]*)"$/) do |arg1, arg2|
 end
 
 Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|
-  find(".pothole-list__item__#{arg1}-button--#{arg2}").click()
+  find(".pothole-list__item__#{arg1}-button--#{arg2}").click
 end
 
 Given(/^I post a pothole on "([^"]*)"$/) do |street|

@@ -9,6 +9,7 @@ before_script:
   - psql -c 'create database pothole_test;' -U postgres
 
 script:
+  - xvfb-run -a bundle exec spec
   - RACK_ENV=test bundle exec rake auto_upgrade
   - bundle exec cucumber
   - bundle exec rspec spec
