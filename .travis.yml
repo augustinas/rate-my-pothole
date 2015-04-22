@@ -3,7 +3,6 @@ rvm:
   - 2.2.1
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq postgresql-server-dev-9.4
 before_script:
   - psql -c 'CREATE DATABASE pothole_test;' -U postgres
 script:
