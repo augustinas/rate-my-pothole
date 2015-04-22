@@ -152,6 +152,7 @@ GEM
       eventmachine (~> 1.0)
       rack (~> 1.0)
     tilt (2.0.1)
+    timecop (0.7.3)
     uuidtools (2.1.5)
     websocket (1.2.2)
     xpath (2.0.0)
@@ -178,3 +179,4 @@ DEPENDENCIES
   sinatra
   sinatra-partial
   thin
+  timecop

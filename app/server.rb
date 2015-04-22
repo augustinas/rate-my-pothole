@@ -20,7 +20,8 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
-    @potholes = Pothole.all.sort { |x, y| total_score(y) <=> total_score(x) }
+    @potholes = Pothole.all.sort { |x, y| weighted_score(y) <=> weighted_score(x) }
+
     erb :index
   end
 
@@ -120,6 +121,13 @@ class RateMyPothole < Sinatra::Base
     user_votes = User.first(id: user_id).votes
     return true if user_votes.first(pothole_id: pothole.id, score: -1)
     false
+  end
+
+  def weighted_score(pothole)
+    Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
+      vote_value =  vote.score / (Time.now - vote.created_at.to_time)
+      sum += vote_value
+    end
   end
 
   # start the server if ruby file executed directly

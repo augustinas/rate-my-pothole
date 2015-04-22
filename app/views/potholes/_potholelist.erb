@@ -4,13 +4,13 @@
       <%= pothole.location %>
       <form method="post" action="/upvote/<%= pothole.id %>">
         <% if current_user && !upvoted?(session[:user_id], pothole) %>
-          <button class="pothole-list__item__upvote-button--<%= pothole.id %>">upvote</button>
+          <button class="pothole-list__item__Flag-button--<%= pothole.id %>">Flag</button>
         <% end %>
       </form>
 
       <form method="post" action="/downvote/<%= pothole.id %>">
         <% if current_user && !downvoted?(session[:user_id], pothole) %>
-          <button class="pothole-list__item__downvote-button--<%= pothole.id %>">downvote</button>
+          <button class="pothole-list__item__Unflag-button--<%= pothole.id %>">Unflag</button>
         <% end %>
       </form>
 
