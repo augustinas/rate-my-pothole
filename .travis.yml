@@ -4,13 +4,14 @@ rvm: '2.2.1'
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq postgresql-server-dev-9.4
+  - sudo apt-get install xvfb
 
 before_script:
   - psql -c 'create database pothole_test;' -U postgres
 
 script:
   - RACK_ENV=test bundle exec rake auto_upgrade
-  - bundle exec cucumber
+  - xvfb-run bundle exec cucumber
   - bundle exec rspec spec
 branches:
   only:
