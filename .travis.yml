@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.2.1
+gemfile:
+  - Gemfile
+before_script:
+  - psql -c 'CREATE DATABASE pothole_test;' -U postgres
+  - psql -c 'CREATE DATABASE pothole_development;' -U postgres
+branches:
+  only:
+    - master

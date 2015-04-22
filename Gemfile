@@ -16,6 +16,7 @@ group :development do
 end
 
 group :test do
+  gem 'rake'
   gem 'rspec'
   gem 'rubocop'
   gem 'rubocop-rspec'
