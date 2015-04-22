@@ -47,19 +47,23 @@ Given(/^I post a pothole$/) do
   step 'I see "Leeds Rd" within ".pothole-list__item"'
 end
 
-Given(/^it is currently (\d+) days later$/) do |arg1|
-    Timecop.freeze(Date.today + 10)
-  end
+Given(/^it is currently (\d+) days later$/) do |days|
+  Timecop.freeze(Date.today + days.to_i)
+end
 
 Then(/^"([^"]*)" should be before "([^"]*)"$/) do |arg1, arg2|
   arg1.should appear_before(arg2)
 end
 
 Given(/^the database is populated with potholes$/) do
-  Pothole.create(location: "street 1", town: "London")
-  Pothole.create(location: "main ave", town: "Leeds")
-  Pothole.create(location: "standard drv", town: "Liversedge")
-  Pothole.create(location: "Drive by park", town: "Bournemouth")
+  london = Town.first_or_create(name: "London")
+  leeds = Town.first_or_create(name: "Leeds")
+  liversedge = Town.first_or_create(name: "Liversedge")
+  bournemouth = Town.first_or_create(name: "Bournemouth")
+  Pothole.create(location: "street 1", town: london)
+  Pothole.create(location: "main ave", town: leeds)
+  Pothole.create(location: "standard drv", town: liversedge)
+  Pothole.create(location: "Drive by park", town: bournemouth)
 end
 
 Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|

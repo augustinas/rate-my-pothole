@@ -97,6 +97,11 @@ class RateMyPothole < Sinatra::Base
     redirect '/'
   end
 
+  post '/towns' do
+    @towns = Town.all
+    erb :townlist
+  end
+
   def total_flags(pothole)
     Pothole.first(id: pothole.id).votes.length
   end
