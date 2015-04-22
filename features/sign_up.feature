@@ -28,13 +28,26 @@ Feature: A user can sign up
     And I should not see "Welcome, citizen1!"
     And I should be on user signup page
 
+@javascript
+  Scenario: User cannot signup with password shorter than 6 chars
+    Given I am on user signup page
+    And I fill in "username" with "citizen1"
+    And I fill in "email" with "angry@citizen.com"
+    And I fill in "password" with "rat"
+    And I fill in "password_confirmation" with "rat"
+    And I should see "Password Too SHORT"
+    And I press "Register"
+    Then I should see "Sorry, your password was too short"
+    And I should not see "Welcome, citizen1!"
+    And I should be on user signup page
+
   Scenario: User cannot signup when password is not supplied
     Given I am on user signup page
     And I fill in "username" with "citizen1"
     And I fill in "email" with "angry@citizen.com"
     And I fill in "password_confirmation" with "ra88it"
     And I press "Register"
-    Then I should see "Sorry, there was something wrong with your password!"
+    Then I should see "Sorry, your password was too short"
     And I should not see "Welcome, citizen1!"
     And I should be on user signup page
 
@@ -71,7 +84,3 @@ Feature: A user can sign up
     And I press "Register"
     Then I should see "Sorry, A user with this email already exists!"
     And I should see "Sorry, This username already exists!"
-
-
-
-
