@@ -81,10 +81,9 @@ class RateMyPothole < Sinatra::Base
     redirect to '/'
   end
 
-  post '/upvote/:pothole' do
+  post '/flag/:pothole' do
     vote = Vote.new(user_id: session[:user_id],
-                    pothole_id: params[:pothole],
-                    score: 1)
+                    pothole_id: params[:pothole])
     if vote.save
       redirect '/'
     else
@@ -93,11 +92,10 @@ class RateMyPothole < Sinatra::Base
     end
   end
 
-  post '/downvote/:pothole' do
-    vote = Vote.new(user_id: session[:user_id],
-                    pothole_id: params[:pothole],
-                    score: -1)
-    if vote.save
+  post '/unflag/:pothole' do
+    vote = Vote.first(user_id: session[:user_id],
+                      pothole_id: params[:pothole])
+    if vote.destroy
       redirect '/'
     else
       flash[:errors] = vote.errors.full_messages
@@ -105,27 +103,19 @@ class RateMyPothole < Sinatra::Base
     end
   end
 
-  def total_score(pothole)
-    Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
-      sum += vote.score
-    end
+  def total_flags(pothole)
+    Pothole.first(id: pothole.id).votes.length
   end
 
-  def upvoted?(user_id, pothole)
+  def user_flagged?(user_id, pothole)
     user_votes = User.first(id: user_id).votes
-    return true if user_votes.first(pothole_id: pothole.id, score: 1)
-    false
-  end
-
-  def downvoted?(user_id, pothole)
-    user_votes = User.first(id: user_id).votes
-    return true if user_votes.first(pothole_id: pothole.id, score: -1)
+    return true if user_votes.first(pothole_id: pothole.id)
     false
   end
 
   def weighted_score(pothole)
     Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
-      vote_value =  vote.score / (Time.now - vote.created_at.to_time)
+      vote_value =  1 / (Time.now - vote.created_at.to_time)
       sum += vote_value
     end
   end

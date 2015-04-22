@@ -56,7 +56,6 @@ MVP2 - MVP1 + User can place a vote and the page doesn't refresh(Tue)
   - signed in user can post pothole (name, location, datetime(problems aticipated))
   - potholes diplayed on homepage
   - place a vote on the pothole that has been added
-  - make an ajax call to vote and update page
 
 MVP3 - MVP2 + potholes are displayed in rank order(Tue)
 
@@ -86,6 +85,7 @@ Extra Tasks:
 * Footer stick to bottom
 only if logged in
 * Style posts
+* make an ajax call to vote and update page
 
 
 
