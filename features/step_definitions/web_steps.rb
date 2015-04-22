@@ -42,6 +42,7 @@ Given(/^I post a pothole$/) do
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
   step 'I fill in "street_name" with "Leeds Rd"'
+  step 'I fill in "town_name" with "Liversedge"'
   step 'I press "Report"'
   step 'I should see "Pothole reported on Leeds Rd"'
   step 'I see "Leeds Rd" within ".pothole-list__item"'
@@ -63,7 +64,7 @@ Given(/^the database is populated with potholes$/) do
   Pothole.create(location: "street 1", town: london)
   Pothole.create(location: "main ave", town: leeds)
   Pothole.create(location: "standard drv", town: liversedge)
-  Pothole.create(location: "Drive by park", town: bournemouth)
+  Pothole.create(location: "Drive-by park", town: bournemouth)
 end
 
 Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|
@@ -74,6 +75,7 @@ Given(/^I post a pothole on "([^"]*)"$/) do |street|
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
   step "I fill in \"street_name\" with \"#{street}\""
+  step 'I fill in "town_name" with "Liversedge"'
   step 'I press "Report"'
 end
 

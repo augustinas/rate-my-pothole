@@ -78,9 +78,17 @@ class RateMyPothole < Sinatra::Base
 
   post '/potholes' do
     street_name = params[:street_name]
-    @pothole = Pothole.create(location: street_name)
-    flash[:notice] = "Pothole reported on #{street_name}"
-    redirect to '/'
+    town_name = params[:town_name]
+    town = Town.first_or_new(name: town_name)
+    if town.save
+      @pothole = Pothole.create(location: street_name, town: town)
+      flash[:notice] = "Pothole reported on #{street_name}, #{town_name}"
+      redirect to '/'
+    else
+      flash[:errors] = town.errors.full_messages
+      redirect '/potholes/new'
+    end
+
   end
 
   post '/flag/:pothole' do
@@ -99,7 +107,7 @@ class RateMyPothole < Sinatra::Base
 
   post '/towns' do
     @towns = Town.all
-    erb :townlist
+    erb :town_list
   end
 
   def total_flags(pothole)

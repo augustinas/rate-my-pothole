@@ -32,8 +32,10 @@ Feature: User can post a pothole
   Scenario: Users cannot create a pothole without a town
     Given I am on the homepage
     When I press "Report Pothole"
-    And I fill in "street_name" with "Leeds Rd"
+    And I fill in "street_name" with "Leeds Liverpool Canal"
     And I fill in "town_name" with ""
     And I press "Report"
     Then I should see "Please provide a town"
     And I should be on report potholes page
+    And I go to the homepage
+    Then I should not see "Leeds Liverpool Canal"
