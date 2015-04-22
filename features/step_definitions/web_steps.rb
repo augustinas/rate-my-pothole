@@ -28,6 +28,16 @@ Given(/^I sign up$/) do
   step 'I press "Register"'
 end
 
+Given(/^I sign up as "([^"]*)"$/) do |name|
+  step 'I am on the homepage'
+  step 'I press "Sign up"'
+  step "I fill in \"username\" with \"#{name}\""
+  step "I fill in \"email\" with \"#{name}@citizen.com\""
+  step 'I fill in "password" with "ra88it"'
+  step 'I fill in "password_confirmation" with "ra88it"'
+  step 'I press "Register"'
+end
+
 Given(/^I post a pothole$/) do
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
@@ -37,8 +47,23 @@ Given(/^I post a pothole$/) do
   step 'I see "Leeds Rd" within ".pothole-list__item"'
 end
 
+Given(/^it is currently (\d+) days later$/) do |days|
+  Timecop.freeze(Date.today + days.to_i)
+end
+
 Then(/^"([^"]*)" should be before "([^"]*)"$/) do |arg1, arg2|
   arg1.should appear_before(arg2)
+end
+
+Given(/^the database is populated with potholes$/) do
+  london = Town.first_or_create(name: "London")
+  leeds = Town.first_or_create(name: "Leeds")
+  liversedge = Town.first_or_create(name: "Liversedge")
+  bournemouth = Town.first_or_create(name: "Bournemouth")
+  Pothole.create(location: "street 1", town: london)
+  Pothole.create(location: "main ave", town: leeds)
+  Pothole.create(location: "standard drv", town: liversedge)
+  Pothole.create(location: "Drive by park", town: bournemouth)
 end
 
 Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|

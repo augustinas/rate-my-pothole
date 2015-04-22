@@ -25,6 +25,7 @@ group :test do
   gem 'cucumber-sinatra'
   gem 'cucumber'
   gem 'jasmine'
+  gem 'timecop'
 end
 
 

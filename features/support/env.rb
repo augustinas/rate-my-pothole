@@ -7,10 +7,11 @@ require File.join(File.dirname(__FILE__), '..', '..', 'app/server.rb')
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
+require 'timecop'
 require 'capybara-webkit'
 require_relative 'rspec_before_after_helper'
 
-DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
 
 # # Chrome Setup for Selenium (Keep for Dan)
 # Capybara.register_driver :chrome do |app|

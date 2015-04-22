@@ -5,5 +5,6 @@ DataMapper.setup(:default, "postgres://localhost/pothole_#{env}")
 require './app/models/user'
 require './app/models/pothole'
 require './app/models/vote'
+require './app/models/town'
 
 DataMapper.finalize

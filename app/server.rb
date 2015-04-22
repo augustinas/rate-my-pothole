@@ -9,6 +9,13 @@ module UserManagement
     User.first(id: session[:user_id])
   end
 
+  def new_user(params)
+    User.new(username: params[:username],
+             email: params[:email],
+             password: params[:password],
+             password_confirmation: params[:password_confirmation])
+  end
+
 end
 
 class RateMyPothole < Sinatra::Base
@@ -20,7 +27,9 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
-    @potholes = Pothole.all.sort { |x, y| total_score(y) <=> total_score(x) }
+    @potholes = Pothole.all.sort do |x, y|
+      weighted_score(y) <=> weighted_score(x)
+    end
     erb :index
   end
 
@@ -29,11 +38,7 @@ class RateMyPothole < Sinatra::Base
   end
 
   post '/users' do
-    user = User.new(username: params[:username],
-                    email: params[:email],
-                    password: params[:password],
-                    password_confirmation: params[:password_confirmation]
-                   )
+    user = new_user(params)
     if user.save
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.username}!"
@@ -56,9 +61,7 @@ class RateMyPothole < Sinatra::Base
   end
 
   post '/sessions' do
-    username = params[:username]
-    password = params[:password]
-    user = User.authenticate(username, password)
+    user = User.authenticate(params)
     if user
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.username}!"
@@ -80,46 +83,40 @@ class RateMyPothole < Sinatra::Base
     redirect to '/'
   end
 
-  post '/upvote/:pothole' do
+  post '/flag/:pothole' do
     vote = Vote.new(user_id: session[:user_id],
-                    pothole_id: params[:pothole],
-                    score: 1)
-    if vote.save
-      redirect '/'
-    else
-      flash[:errors] = vote.errors.full_messages
-      redirect '/'
-    end
+                    pothole_id: params[:pothole])
+    flash[:errors] = vote.errors.full_messages unless vote.save
+    redirect '/'
   end
 
-  post '/downvote/:pothole' do
-    vote = Vote.new(user_id: session[:user_id],
-                    pothole_id: params[:pothole],
-                    score: -1)
-    if vote.save
-      redirect '/'
-    else
-      flash[:errors] = vote.errors.full_messages
-      redirect '/'
-    end
+  post '/unflag/:pothole' do
+    vote = Vote.first(user_id: session[:user_id],
+                      pothole_id: params[:pothole])
+    flash[:errors] = vote.errors.full_messages unless vote.destroy
+    redirect '/'
   end
 
-  def total_score(pothole)
+  post '/towns' do
+    @towns = Town.all
+    erb :townlist
+  end
+
+  def total_flags(pothole)
+    Pothole.first(id: pothole.id).votes.length
+  end
+
+  def user_flagged?(user_id, pothole)
+    user_votes = User.first(id: user_id).votes
+    return true if user_votes.first(pothole_id: pothole.id)
+    false
+  end
+
+  def weighted_score(pothole)
     Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
-      sum += vote.score
+      vote_value =  1 / (Time.now - vote.created_at.to_time)
+      sum += vote_value
     end
-  end
-
-  def upvoted?(user_id, pothole)
-    user_votes = User.first(id: user_id).votes
-    return true if user_votes.first(pothole_id: pothole.id, score: 1)
-    false
-  end
-
-  def downvoted?(user_id, pothole)
-    user_votes = User.first(id: user_id).votes
-    return true if user_votes.first(pothole_id: pothole.id, score: -1)
-    false
   end
 
   # start the server if ruby file executed directly
