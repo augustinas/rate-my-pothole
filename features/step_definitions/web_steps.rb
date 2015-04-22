@@ -63,7 +63,7 @@ Given(/^the database is populated with potholes$/) do
   bournemouth = Town.first_or_create(name: "Bournemouth")
   Pothole.create(location: "street 1", town: london)
   Pothole.create(location: "main ave", town: leeds)
-  Pothole.create(location: "standard drv", town: liversedge)
+  Pothole.create(location: "Leeds Rd", town: liversedge)
   Pothole.create(location: "Drive-by park", town: bournemouth)
 end
 
