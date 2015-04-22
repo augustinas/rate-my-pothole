@@ -9,6 +9,13 @@ module UserManagement
     User.first(id: session[:user_id])
   end
 
+  def new_user(params)
+    User.new(username: params[:username],
+             email: params[:email],
+             password: params[:password],
+             password_confirmation: params[:password_confirmation])
+  end
+
 end
 
 class RateMyPothole < Sinatra::Base
@@ -20,8 +27,9 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
-    @potholes = Pothole.all.sort { |x, y| weighted_score(y) <=> weighted_score(x) }
-
+    @potholes = Pothole.all.sort do |x, y|
+      weighted_score(y) <=> weighted_score(x)
+    end
     erb :index
   end
 
@@ -30,11 +38,7 @@ class RateMyPothole < Sinatra::Base
   end
 
   post '/users' do
-    user = User.new(username: params[:username],
-                    email: params[:email],
-                    password: params[:password],
-                    password_confirmation: params[:password_confirmation]
-                   )
+    user = new_user(params)
     if user.save
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.username}!"
@@ -57,9 +61,7 @@ class RateMyPothole < Sinatra::Base
   end
 
   post '/sessions' do
-    username = params[:username]
-    password = params[:password]
-    user = User.authenticate(username, password)
+    user = User.authenticate(params)
     if user
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.username}!"
@@ -84,23 +86,15 @@ class RateMyPothole < Sinatra::Base
   post '/flag/:pothole' do
     vote = Vote.new(user_id: session[:user_id],
                     pothole_id: params[:pothole])
-    if vote.save
-      redirect '/'
-    else
-      flash[:errors] = vote.errors.full_messages
-      redirect '/'
-    end
+    flash[:errors] = vote.errors.full_messages unless vote.save
+    redirect '/'
   end
 
   post '/unflag/:pothole' do
     vote = Vote.first(user_id: session[:user_id],
                       pothole_id: params[:pothole])
-    if vote.destroy
-      redirect '/'
-    else
-      flash[:errors] = vote.errors.full_messages
-      redirect '/'
-    end
+    flash[:errors] = vote.errors.full_messages unless vote.destroy
+    redirect '/'
   end
 
   def total_flags(pothole)

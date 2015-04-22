@@ -2,19 +2,17 @@
   <% @potholes.each do |pothole| %>
     <div class="pothole-list__item">
       <%= pothole.location %>
-      <form method="post" action="/flag/<%= pothole.id %>">
-        <% if current_user && !user_flagged?(session[:user_id], pothole) %>
-          <button class="pothole-list__item__Flag-button--<%= pothole.id %>">Flag</button>
-        <% end %>
-      </form>
-
-      <form method="post" action="/unflag/<%= pothole.id %>">
-        <% if current_user && user_flagged?(session[:user_id], pothole) %>
+      <% if current_user && !user_flagged?(session[:user_id], pothole) %>
+        <form method="post" action="/flag/<%= pothole.id %>">
+            <button class="pothole-list__item__Flag-button--<%= pothole.id %>">Flag</button>
+        </form>
+      <% elsif current_user %>
+        <form method="post" action="/unflag/<%= pothole.id %>">
           <button class="pothole-list__item__Unflag-button--<%= pothole.id %>">Unflag</button>
-        <% end %>
-      </form>
-
+        </form>
+      <% end %>
       <div class="votes">Concerned citizens : <%= total_flags(pothole) %></div>
     </div>
   <% end %>
 </div>
+

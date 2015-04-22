@@ -55,6 +55,13 @@ Then(/^"([^"]*)" should be before "([^"]*)"$/) do |arg1, arg2|
   arg1.should appear_before(arg2)
 end
 
+Given(/^the database is populated with potholes$/) do
+  Pothole.create(location: "street 1", town: "London")
+  Pothole.create(location: "main ave", town: "Leeds")
+  Pothole.create(location: "standard drv", town: "Liversedge")
+  Pothole.create(location: "Drive by park", town: "Bournemouth")
+end
+
 Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|
   find(".pothole-list__item__#{arg1}-button--#{arg2}").click
 end
