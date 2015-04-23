@@ -76,6 +76,7 @@ When(/^I wait (\d+) seconds$/) do |seconds|
 end
 
 Given(/^I post a pothole on "([^"]*)"$/) do |street|
+  puts ENV['GAPI_HOST']
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
   step "I fill in \"street_name\" with \"#{street}\""

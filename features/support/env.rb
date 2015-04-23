@@ -3,13 +3,16 @@
 ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', '..', 'app/server.rb')
-
+require './app/fake_google_api'
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 require 'timecop'
 require 'capybara-webkit'
 require_relative 'rspec_before_after_helper'
+
+server = FakeGoogleApi.boot
+ENV['GAPI_HOST'] = [server.host, server.port].join(':')
 
 DataMapper.auto_migrate!
 
@@ -30,9 +33,9 @@ Capybara.register_driver :webkit_allow do |app|
   driver
 end
 
-Capybara.app = RateMyPothole
-
 Capybara.javascript_driver = :selenium
+
+Capybara.app = RateMyPothole
 
 class RateMyPotholeWorld
 

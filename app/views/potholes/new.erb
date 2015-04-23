@@ -25,11 +25,13 @@
   $('.user-forms--report-pothole').on('submit', function(event) {
     event.preventDefault();
     $.ajax({
-      url: "https://maps.googleapis.com/maps/api/geocode/json",
+      url: "HTTP://" + "<%= ENV['GAPI_HOST'] %>" + "/",
+      dataType: 'jsonp',
       data: {
         address: $('#street-name').val() + '+' + $('#town-name').val()
       },
       success: function(data) {
+        alert(data);
         postLocationData(data.results[0].geometry.location);
       }
     });
