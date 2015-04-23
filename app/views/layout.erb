@@ -18,20 +18,21 @@
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       $.ajax({
-        url: 'http://localhost:4567/users?username=' + profile.getId() + '&email=' + profile.getEmail() + '&password=' + profile.getId() + '&password_confirmation' + profile.getId(),
-        method: 'POST'
+        url: '/users',
+        method: 'POST',
+        data: { username: profile.getId(), email: profile.getEmail(),
+         password: profile.getId(),
+         password_confirmation: profile.getId() }
         });
-
-      console.log('ID: ' + profile.getId());
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail());
     }
 
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
-        console.log('User signed out.');
+        $.ajax({
+        url: '/sessions/end',
+        method: 'GET'
+        });
       });
     }
     </script>

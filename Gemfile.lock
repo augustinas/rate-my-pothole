@@ -179,6 +179,7 @@ DEPENDENCIES
   database_cleaner
   dm-postgres-adapter
   jasmine
+  json
   oauth
   rack-flash3
   rake
