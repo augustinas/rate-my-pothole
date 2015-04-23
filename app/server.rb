@@ -141,12 +141,7 @@ class RateMyPothole < Sinatra::Base
                                 authorize_path: '/oauth/authorize',
                                 access_token_path: '/oauth/access_token')
     access_token = session[:token].get_access_token(oauth_verifier: params[:oauth_verifier])
-    # p response.body
-    # user_info = JSON.parse(response.body)
-    # p user_info
-    response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/home_timeline.json")
-    p response
-    redirect to '/'
+    "#{access_token.params[:screen_name]}"
   end
 
   def total_flags(pothole)
