@@ -12,7 +12,29 @@
       src="https://maps.googleapis.com/maps/api/js?sensor=false">
     </script>
     <script type="text/javascript" src="javascript/gmaps.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="182050406581-t2llvsegnsk8ni6k0j2fmesoorr1456i.apps.googleusercontent.com">
+    <script type="text/javascript">
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      $.ajax({
+        url: 'http://localhost:4567/users?username=' + profile.getId() + '&email=' + profile.getEmail() + '&password=' + profile.getId() + '&password_confirmation' + profile.getId(),
+        method: 'POST'
+        });
 
+      console.log('ID: ' + profile.getId());
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail());
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+    </script>
   </head>
   <body>
     <div id="wrapper">

@@ -119,29 +119,31 @@ class RateMyPothole < Sinatra::Base
     erb :potholes_by_town
   end
 
-  get '/users/twitter/new' do
-    oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
-                                ENV['CONSUMER_SECRET'],
-                                site: 'https://api.twitter.com',
-                                request_token_path: '/oauth/request_token',
-                                authorize_path: '/oauth/authorize',
-                                access_token_path: '/oauth/access_token')
-    url = 'http://localhost:4567/users/twitter/complete'
-    @request_token = oauth.get_request_token(oauth_callback: url)
-    session[:token] = @request_token
-    # session[:secret] = request_token.secret
-    redirect to "#{@request_token.authorize_url(oauth_callback: url)}"
+  get '/users/google/new' do
+    # oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
+    #                             ENV['CONSUMER_SECRET'],
+    #                             site: 'https://accounts.google.com/o/oauth2/auth')
+    #                             # request_token_path: '/oauth/request_token',
+    #                             # authorize_path: '/oauth/authorize',
+    #                             # access_token_path: '/oauth/access_token'
+    # url = 'http://localhost:4567/users/google/complete'
+    # @request_token = oauth.get_request_token(oauth_callback: url)
+    # session[:token] = @request_token
+    # # session[:secret] = request_token.secret
+    # redirect to "#{@request_token.authorize_url(oauth_callback: url)}"
+    erb :index
   end
 
-  get '/users/twitter/complete' do
-    oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
-                                ENV['CONSUMER_SECRET'],
-                                site: 'https://api.twitter.com',
-                                request_token_path: '/oauth/request_token',
-                                authorize_path: '/oauth/authorize',
-                                access_token_path: '/oauth/access_token')
-    access_token = session[:token].get_access_token(oauth_verifier: params[:oauth_verifier])
-    "#{access_token.params[:screen_name]}"
+  get '/users/google/complete' do
+    # oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
+    #                             ENV['CONSUMER_SECRET'],
+    #                             site: 'https://accounts.google.com/o/oauth2/auth')
+    #                             # request_token_path: '/oauth/request_token',
+    #                             # authorize_path: '/oauth/authorize',
+    #                             # access_token_path: '/oauth/access_token'
+    # access_token = session[:token].get_access_token(oauth_verifier: params[:oauth_verifier])
+    # p access_token
+    erb :index
   end
 
   def total_flags(pothole)
