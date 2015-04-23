@@ -1,11 +1,13 @@
-<% if current_user %>
-  <form class="report-pothole" action="/potholes/new">
-    <button class="report-pothole__button">Report Pothole</button>
-  </form>
-<% end %>
+<div class="center-container">
+  <% if current_user %>
+    <form class="report-pothole" action="/potholes/new">
+      <button class="report-pothole__button">Report Pothole</button>
+    </form>
+  <% end %>
 
-<h2>View potholes by town:</h2>
-<form method="post" action="/towns">
-  <button>View by town</button>
-</form>
-<%= erb :'potholes/_potholelist' %>
+  <form class="view-by-town"action="/towns">
+    <button class="view-by-town__button">View by town</button>
+  </form>
+</div>
+<h2 class="homepage-header">Trending Potholes</h2>
+<%= erb :'potholes/_pothole_list', locals: { potholes: potholes } %>

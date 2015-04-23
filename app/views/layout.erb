@@ -5,6 +5,14 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
     <script src="/javascript/jquery.js"></script>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false">
+    </script>
+    <script type="text/javascript" src="javascript/gmaps.js"></script>
+
   </head>
   <body>
     <div id="wrapper">
@@ -15,5 +23,6 @@
       </div>
       <%= erb :_footer %>
     </div>
+    <div id="map-canvas"></div>
   </body>
 </html>

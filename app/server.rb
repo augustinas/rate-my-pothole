@@ -27,10 +27,10 @@ class RateMyPothole < Sinatra::Base
   helpers UserManagement
 
   get '/' do
-    @potholes = Pothole.all.sort do |x, y|
+    potholes = Pothole.all.sort do |x, y|
       weighted_score(y) <=> weighted_score(x)
     end
-    erb :index
+    erb :index, locals: { potholes: potholes }
   end
 
   get '/users/new' do
@@ -78,9 +78,17 @@ class RateMyPothole < Sinatra::Base
 
   post '/potholes' do
     street_name = params[:street_name]
-    @pothole = Pothole.create(location: street_name)
-    flash[:notice] = "Pothole reported on #{street_name}"
-    redirect to '/'
+    town_name = params[:town_name]
+    town = Town.first_or_new(name: town_name)
+    if town.save
+      @pothole = Pothole.create(location: street_name, town: town)
+      flash[:notice] = "Pothole reported on #{street_name}, #{town_name}"
+      redirect to '/'
+    else
+      flash[:errors] = town.errors.full_messages
+      redirect '/potholes/new'
+    end
+
   end
 
   post '/flag/:pothole' do
@@ -97,9 +105,16 @@ class RateMyPothole < Sinatra::Base
     redirect '/'
   end
 
-  post '/towns' do
+  get '/towns' do
     @towns = Town.all
-    erb :townlist
+    erb :town_list
+  end
+
+  get '/towns/:town' do
+    @potholes = Pothole.select do |pothole|
+      pothole.town.name == params[:town]
+    end
+    erb :potholes_by_town
   end
 
   def total_flags(pothole)
