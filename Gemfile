@@ -10,6 +10,7 @@ gem 'sinatra-partial'
 gem 'rack-flash3'
 gem 'selenium-webdriver'
 gem 'capybara-webkit'
+gem 'oauth'
 
 group :development do
   gem 'thin'

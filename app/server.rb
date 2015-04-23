@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
+require 'oauth'
 require_relative 'data_mapper_setup'
 
 module UserManagement
@@ -115,6 +116,17 @@ class RateMyPothole < Sinatra::Base
       pothole.town.name == params[:town]
     end
     erb :potholes_by_town
+  end
+
+  get '/users/twitter/new' do
+    oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
+                                ENV['CONSUMER_SECRET'],
+                                site: 'http://twitter.com')
+    url = 'http://localhost:4567/users/twitter/complete'
+    request_token = oauth.get_request_token(oauth_callback: url)
+    session[:token] = request_token.token
+    session[:secret] = request_token.secret
+    redirect_to request_token.authorize_url
   end
 
   def total_flags(pothole)
