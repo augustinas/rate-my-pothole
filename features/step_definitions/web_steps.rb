@@ -42,6 +42,7 @@ Given(/^I post a pothole$/) do
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
   step 'I fill in "street_name" with "Leeds Rd"'
+  step 'I fill in "town_name" with "Liversedge"'
   step 'I press "Report"'
   step 'I should see "Pothole reported on Leeds Rd"'
   step 'I see "Leeds Rd" within ".pothole-list__item"'
@@ -62,19 +63,33 @@ Given(/^the database is populated with potholes$/) do
   bournemouth = Town.first_or_create(name: "Bournemouth")
   Pothole.create(location: "street 1", town: london)
   Pothole.create(location: "main ave", town: leeds)
-  Pothole.create(location: "standard drv", town: liversedge)
-  Pothole.create(location: "Drive by park", town: bournemouth)
+  Pothole.create(location: "Leeds Rd", town: liversedge)
+  Pothole.create(location: "Drive-by park", town: bournemouth)
 end
 
 Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|
   find(".pothole-list__item__#{arg1}-button--#{arg2}").click
 end
 
+When(/^I wait (\d+) seconds$/) do |seconds|
+  sleep seconds.to_i
+end
+
 Given(/^I post a pothole on "([^"]*)"$/) do |street|
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
   step "I fill in \"street_name\" with \"#{street}\""
+  step 'I fill in "town_name" with "Liversedge"'
   step 'I press "Report"'
+end
+
+When(/^I send an http request$/) do
+  uri = URI("https://api.github.com/repos/thoughtbot/factory_girl/contributors")
+  @response = Net::HTTP.get(uri)
+end
+
+Then(/^I expect to get a response$/) do
+  expect(@response).to be_an_instance_of String
 end
 
 Given(/^(?:|I )am on (.+)$/) do |page_name|

@@ -36,9 +36,37 @@ button {
   display: inline-block;
 }
 
+/*Joes Contributions*/
+
+.homepage-header {
+  color: yellow;
+  font: arial;
+  font-size: 2em;
+  text-decoration: underline;
+  margin-left: 27%;
+}
+
+.report-pothole {
+  display: inline-block;
+}
+
+.view-by-town {
+  display: inline-block;
+}
+/*NOT MADNESS STILL*/
 .report-pothole__button {
   margin: 1.5em auto;
-  display: table;
+  display: inline-block;
+}
+
+.view-by-town__button {
+  margin:1.5em auto;
+  display: inline-block;
+}
+
+.center-container {
+  margin: 0 auto;
+  width: 28%;
 }
 
 /*Flash*/
@@ -71,9 +99,29 @@ button {
   margin-bottom: 1em;
 }
 
-/*Signup/Signin*/
+/*Town Listing*/
 
-.user-forms, .pothole-list__item, .pothole-form {
+.town-header {
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+.town-listing {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 1px;
+  text-align: center;
+  width: 75%;
+  margin: 3em auto;
+  height: 3em;
+}
+
+/*Pothole listing*/
+
+.pothole-list__item, .pothole-form {
   background-color: white;
   opacity: 0.8;
   border-radius: 1em;
@@ -88,6 +136,19 @@ button {
   padding: 1em 2em;
   width: 40%;
   text-align: left;
+}
+
+/*Signup/Signin*/
+
+.user-forms {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 1px;
+  text-align: center;
+  width: 75%;
+  margin: 3em auto;
 }
 
 .user-forms input {

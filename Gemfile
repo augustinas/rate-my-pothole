@@ -24,8 +24,8 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-sinatra'
   gem 'cucumber'
-  gem 'jasmine'
   gem 'timecop'
+  gem 'jasmine'
 end
 
 
