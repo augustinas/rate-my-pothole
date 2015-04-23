@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
 require 'oauth'
+require 'json'
 require_relative 'data_mapper_setup'
 
 module UserManagement
@@ -121,12 +122,29 @@ class RateMyPothole < Sinatra::Base
   get '/users/twitter/new' do
     oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
                                 ENV['CONSUMER_SECRET'],
-                                site: 'http://twitter.com')
+                                site: 'https://api.twitter.com',
+                                request_token_path: '/oauth/request_token',
+                                authorize_path: '/oauth/authorize',
+                                access_token_path: '/oauth/access_token')
     url = 'http://localhost:4567/users/twitter/complete'
-    request_token = oauth.get_request_token(oauth_callback: url)
-    session[:token] = request_token.token
-    session[:secret] = request_token.secret
-    redirect_to request_token.authorize_url
+    @request_token = oauth.get_request_token(oauth_callback: url)
+    session[:token] = @request_token
+    # session[:secret] = request_token.secret
+    redirect to "#{@request_token.authorize_url(oauth_callback: url)}"
+  end
+
+  get '/users/twitter/complete' do
+    oauth = OAuth::Consumer.new(ENV['CONSUMER_KEY'],
+                                ENV['CONSUMER_SECRET'],
+                                site: 'https://api.twitter.com',
+                                request_token_path: '/oauth/request_token',
+                                authorize_path: '/oauth/authorize',
+                                access_token_path: '/oauth/access_token')
+    access_token = session[:token].get_access_token(oauth_verifier: params[:oauth_verifier])
+    p response.body
+    # user_info = JSON.parse(response.body)
+    # p user_info
+    redirect to '/'
   end
 
   def total_flags(pothole)

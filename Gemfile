@@ -11,6 +11,7 @@ gem 'rack-flash3'
 gem 'selenium-webdriver'
 gem 'capybara-webkit'
 gem 'oauth'
+gem 'json'
 
 group :development do
   gem 'thin'
