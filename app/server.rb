@@ -16,6 +16,23 @@ module UserManagement
              password_confirmation: params[:password_confirmation])
   end
 
+  def total_flags(pothole)
+    Pothole.first(id: pothole.id).votes.length
+  end
+
+  def user_flagged?(user_id, pothole)
+    user_votes = User.first(id: user_id).votes
+    return true if user_votes.first(pothole_id: pothole.id)
+    false
+  end
+
+  def weighted_score(pothole)
+    Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
+      vote_value =  1 / (Time.now - vote.created_at.to_time)
+      sum += vote_value
+    end
+  end
+
 end
 
 class RateMyPothole < Sinatra::Base
@@ -79,11 +96,21 @@ class RateMyPothole < Sinatra::Base
   post '/potholes' do
     street_name = params[:street_name]
     town_name = params[:town_name]
+    lat = params[:location][:lat] if params[:location]
+    lng = params[:location][:lng] if params[:location]
     town = Town.first_or_new(name: town_name)
     if town.save
-      @pothole = Pothole.create(location: street_name, town: town)
+      @pothole = Pothole.create(
+        location: street_name,
+        town: town,
+        lat: lat,
+        long: lng)
       flash[:notice] = "Pothole reported on #{street_name}, #{town_name}"
-      redirect to '/'
+      if params[:location]
+        '/'
+      else
+        redirect to '/'
+      end
     else
       flash[:errors] = town.errors.full_messages
       redirect '/potholes/new'
@@ -115,23 +142,6 @@ class RateMyPothole < Sinatra::Base
       pothole.town.name == params[:town]
     end
     erb :potholes_by_town
-  end
-
-  def total_flags(pothole)
-    Pothole.first(id: pothole.id).votes.length
-  end
-
-  def user_flagged?(user_id, pothole)
-    user_votes = User.first(id: user_id).votes
-    return true if user_votes.first(pothole_id: pothole.id)
-    false
-  end
-
-  def weighted_score(pothole)
-    Pothole.first(id: pothole.id).votes.inject(0) do |sum, vote|
-      vote_value =  1 / (Time.now - vote.created_at.to_time)
-      sum += vote_value
-    end
   end
 
   # start the server if ruby file executed directly

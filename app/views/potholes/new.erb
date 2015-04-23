@@ -1,9 +1,38 @@
 <% if current_user %>
-  <form class="user-forms" action="/potholes" method="post">
+  <form class="user-forms user-forms--report-pothole" action="/potholes" method="post">
     <label for="street-name">Street Name</label>
     <input id="street-name" type="text" name="street_name" placeholder="Street Name">
-    <label for="town-name">Street Name</label>
+    <label for="town-name">Town Name</label>
     <input id="town-name" type="text" name="town_name" placeholder="Town Name">
     <button>Report</button>
   </form>
 <% end %>
+<script>
+  var postLocationData = function(location) {
+    $.ajax({
+      url: "/potholes",
+      method: "post",
+      data: {
+        location: location,
+        street_name: $('#street-name').val(),
+        town_name: $('#town-name').val()
+      },
+      success: function(redirect) {
+        window.location.replace(redirect);
+      }
+    });
+  };
+  $('.user-forms--report-pothole').on('submit', function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: "https://maps.googleapis.com/maps/api/geocode/json",
+      data: {
+        address: $('#street-name').val() + '+' + $('#town-name').val()
+      },
+      success: function(data) {
+        postLocationData(data.results[0].geometry.location);
+      }
+    });
+    return false;
+  });
+</script>

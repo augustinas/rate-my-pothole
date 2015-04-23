@@ -71,12 +71,25 @@ Given(/^I press "([^"]*)" on pothole "([^"]*)"$/) do |arg1, arg2|
   find(".pothole-list__item__#{arg1}-button--#{arg2}").click
 end
 
+When(/^I wait (\d+) seconds$/) do |seconds|
+  sleep seconds.to_i
+end
+
 Given(/^I post a pothole on "([^"]*)"$/) do |street|
   step 'I am on the homepage'
   step 'I press "Report Pothole"'
   step "I fill in \"street_name\" with \"#{street}\""
   step 'I fill in "town_name" with "Liversedge"'
   step 'I press "Report"'
+end
+
+When(/^I send an http request$/) do
+  uri = URI("https://api.github.com/repos/thoughtbot/factory_girl/contributors")
+  @response = Net::HTTP.get(uri)
+end
+
+Then(/^I expect to get a response$/) do
+  expect(@response).to be_an_instance_of String
 end
 
 Given(/^(?:|I )am on (.+)$/) do |page_name|

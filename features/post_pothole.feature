@@ -39,3 +39,9 @@ Feature: User can post a pothole
     And I should be on report potholes page
     And I go to the homepage
     Then I should not see "Leeds Liverpool Canal"
+
+  @ajax, @javascript
+  Scenario: See lat and long on pothole post
+    Given I post a pothole on "Leeds Rd"
+    When I wait 3 seconds
+    Then I should see "53.7142843, -1.6805009"
