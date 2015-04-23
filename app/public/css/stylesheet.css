@@ -36,7 +36,7 @@ button {
   display: inline-block;
 }
 
-/*THIS NOT MADNESS*/
+/*Joes Contributions*/
 
 .homepage-header {
   color: yellow;
@@ -47,12 +47,10 @@ button {
 }
 
 .report-pothole {
-  margin: auto;
   display: inline-block;
 }
 
 .view-by-town {
-  margin: auto;
   display: inline-block;
 }
 /*NOT MADNESS STILL*/
@@ -99,6 +97,26 @@ button {
   color: white;
   text-align: center;
   margin-bottom: 1em;
+}
+
+/*Town Listing*/
+
+.town-header {
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+.town-listing {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 1px;
+  text-align: center;
+  width: 75%;
+  margin: 3em auto;
+  height: 3em;
 }
 
 /*Pothole listing*/
