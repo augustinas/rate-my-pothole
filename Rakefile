@@ -20,3 +20,6 @@ task :auto_migrate do
   DataMapper.auto_migrate!
   puts 'Auto-upgrade complete (data could have been lost)'
 end
+
+require 'jasmine'
+load 'jasmine/tasks/jasmine.rake'
