@@ -7,7 +7,7 @@
     <% if current_user %>
       <span><%= current_user.username %></span>
       <form  action="/sessions/end" method="get" id="sign_out" class="user-buttons__button">
-        <button>Sign out</button>
+        <button onclick="signOut();">Sign out</button>
       </form>
     <% else %>
       <form  action="/sessions/new" method="get" id="sign_in" class="user-buttons__button">
@@ -18,6 +18,5 @@
       </form>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <% end %>
-    <a href="#" onclick="signOut();">Sign out</a>
   </div>
 </header>
