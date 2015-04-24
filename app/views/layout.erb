@@ -17,25 +17,20 @@
     <script type="text/javascript">
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
-      $.ajax({
-        url: '/users',
-        method: 'POST',
-        data: { username: profile.getId(), email: profile.getEmail(),
-         password: profile.getId(),
-         password_confirmation: profile.getId() }
-        });
-    }
-
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        $.ajax({
-        url: '/sessions/end',
-        method: 'GET'
-        });
-      });
+      $.post('/sessions', { username: profile.getId(),
+         password: profile.getId() });
+      window.location.assign("/")
     }
     </script>
+
+    <script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
   </head>
   <body>
     <div id="wrapper">
