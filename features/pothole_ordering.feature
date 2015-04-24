@@ -19,7 +19,8 @@ Feature: Pothole Ordering.
     And I press "Flag" on pothole "1"
     Given I press "Sign out"
     Given I sign up as "Donald"
+    And I am on the homepage
     And I press "Flag" on pothole "1"
-    Given it is currently 10 days later
+    Given I step in my time machine and travel 10 days into the distant future
     And I press "Flag" on pothole "2"
     Then "Another Rd" should be before "Leeds Rd"
