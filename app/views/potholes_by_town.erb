@@ -6,6 +6,8 @@
 
 <script type="text/javascript">
   $(document).ready( function() {
-    gmaps.centerMap("<%= params[:town] %>", 12);
+    var town_gmaps = new Gmaps();
+    town_gmaps.initialize();
+    town_gmaps.centerMap("<%= params[:town] %>", 12);
   });
 </script>

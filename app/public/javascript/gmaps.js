@@ -42,20 +42,18 @@ Gmaps.prototype.markMap = function(address) {
 Gmaps.prototype.markMapCoord = function(lat, lng) {
   var marker = new google.maps.Marker({
     map: this.map,
-    position: new google.maps.LatLng(54.0,-2.5)
+    position: new google.maps.LatLng(lat,lng),
+    title: 'test for dan'
   });
-  console.log(marker)
+  console.log(lat);
 };
 
-var gmaps = new Gmaps();
 
-marks = function(){
-  gmaps.markMap("London")
-  gmaps.markMap("Leeds")
-}
 
-google.maps.event.addDomListener(window, 'load', gmaps.initialize);
-google.maps.event.addDomListener(gmaps, 'tilesloaded', marks());
+
+
+// google.maps.event.addDomListener(window, 'load', gmaps.initialize);
+
 // google.maps.event.addDomListener(gmaps, 'tilesloaded', gmaps.markMap("Leeds"));
 // gmaps.markMap("LS9 8PA");
 // gmaps.markMap("Bournemouth")
