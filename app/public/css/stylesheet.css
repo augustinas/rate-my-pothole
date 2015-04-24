@@ -91,7 +91,7 @@ button {
 
 /*Google Map*/
 
-.map-canvas {
+.map-canvas, .town-map {
   height: 90%;
   width: 100%;
   margin: auto;

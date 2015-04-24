@@ -1,5 +1,5 @@
  <div class="town__map">
-  <div class="map-canvas" id="map-canvas"></div>
+  <div class="town-map" id="town-map"></div>
 </div>
 <h2 class='town__header'><%= params[:town] %></h2>
 <%= erb :'potholes/_pothole_list', locals: { :potholes => @potholes } %>
@@ -7,7 +7,9 @@
 <script type="text/javascript">
   $(document).ready( function() {
     var town_gmaps = new Gmaps();
-    town_gmaps.initialize();
-    town_gmaps.centerMap("<%= params[:town] %>", 12);
+    town_gmaps.initialize("town-map", 12, <%= @lat %>, <%= @lng %> );
+    setTimeout(function() {
+      town_gmaps.centerMap("<%= params[:town] %>", 12);
+    }, 1000);
   });
 </script>

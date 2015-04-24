@@ -24,7 +24,7 @@
 <script>
   $(document).ready( function() {
     var gmaps = new Gmaps();
-    gmaps.initialize();
+    gmaps.initialize('map-canvas', 6, 54.0, -2.5);
     <% mark_all_potholes.each do |pothole| %>
         gmaps.markMapCoord(<%=pothole[:lat]%>,<%=pothole[:lng]%>);
     <% end %>

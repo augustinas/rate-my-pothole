@@ -3,12 +3,12 @@ var Gmaps = function() {
   this.map;
 }
 
-Gmaps.prototype.initialize = function() {
+Gmaps.prototype.initialize = function(mapname, zoom, lat, long) {
   var mapOptions = {
-  zoom: 6,
-  center: {lat: 54.0, lng: -2.5}
+  zoom: zoom,
+  center: {lat: lat, lng: long}
   }
-  this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  this.map = new google.maps.Map(document.getElementById(mapname), mapOptions);
   // this.centerMap("Reading Rd, London, UK");
 };
 
