@@ -1,0 +1,6 @@
+require_relative 'controllers/users'
+require_relative 'controllers/sessions'
+require_relative 'controllers/potholes'
+require_relative 'controllers/locations'
+require_relative 'controllers/gmaps'
+require_relative 'controllers/flags'
