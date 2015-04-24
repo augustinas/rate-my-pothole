@@ -1,11 +1,3 @@
-.map-canvas {
-  height: 90%;
-  width: 100%;
-  margin: auto;
-  padding: 0;
-  float: left;
- }
-
 html, .wrapper, .container {
   height: 100%;
 }
@@ -14,11 +6,6 @@ body {
   background-image: url("/images/tarmac2.jpg");
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   height: 100%;
-}
-
-button {
-  width: 10em;
-  height: 2em;
 }
 
 /*Header*/
@@ -37,6 +24,11 @@ button {
 }
 
 /*Buttons*/
+
+button {
+  width: 10em;
+  height: 2em;
+}
 
 .user-buttons {
   float: right;
@@ -97,6 +89,16 @@ button {
   width: 28%;
 }
 
+/*Google Map*/
+
+.map-canvas {
+  height: 90%;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  float: left;
+}
+
 /*Flash*/
 
 .flash {
@@ -152,15 +154,26 @@ button {
 }
 
 .town-listing {
-  background-color: white;
+  background-color: rgba(100, 100, 0, 0.7);
   opacity: 0.8;
   border-radius: 1em;
   border-color: black;
   border-width: 1px;
   text-align: center;
   width: 75%;
-  margin: 3em auto;
-  height: 3em;
+  margin: 2em auto;
+  height: 4em;
+  padding: 0.2em;
+}
+
+.town-listing__link {
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+  border: 2px white solid;
+  padding: 0.3em;
+  position: relative;
+  top: 30%;
 }
 
 /*Pothole listing*/
@@ -193,7 +206,7 @@ button {
 
 
 .pothole-list__item, .pothole-form {
-  background-color: rgba(255, 247, 0, 0.2);
+  background-color: rgba(120, 120, 0, 0.6);
   border-radius: 1em;
   border-color: black;
   border-width: 1px;
@@ -222,7 +235,7 @@ button {
   margin: 3em auto;
 }
 
-.user-forms input {
+.user-forms__input {
   display: block;
   margin-bottom: 1em;
   opacity: 1;
@@ -230,19 +243,13 @@ button {
   text-align: center;
 }
 
-.user-forms label {
+.user-forms__label {
   visibility: hidden;
   display: block;
 }
 
-.user-forms button {
- /* margin-bottom: 1em;*/
-  /*display: block;*/
+.user-forms__button {
   margin: 1.5em auto;
-}
-
-.user-forms__input--confirm {
-  margin-bottom: 1em;
 }
 
 .user-forms__alert {
@@ -255,6 +262,7 @@ button {
 .footer {
   background-color: white;
   opacity: 0.8;
+  height: 3.5em;
   clear: both;
 }
 

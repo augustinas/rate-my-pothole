@@ -1,5 +1,5 @@
 <% @towns.each do |town| %>
   <div class="town-listing">
-    <a href="/towns/<%= town.name %>"><%= town.name %></a>
+    <a class="town-listing__link" href="/towns/<%= town.name %>"><%= town.name %></a>
   </div>
 <% end %>
