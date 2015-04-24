@@ -25,7 +25,15 @@ Feature: A user can sign up
     And I should not see "Welcome, citizen1!"
     And I should be on user signup page
 
-@javascript
+  @javascript
+  Scenario: Mismatching passwords warning disappears
+    Given I am on user signup page
+    When I fill in form with mismatching passwords
+    Then I should see "Passwords Don't Match"
+    When I fill in "password_confirmation" with "ra88it"
+    Then I should not see "Passwords Don't Match"
+
+  @javascript
   Scenario: User cannot signup with password shorter than 6 chars
     Given I am on user signup page
     When I fill in form with short password
@@ -34,6 +42,14 @@ Feature: A user can sign up
     Then I should see "Sorry, your password was too short"
     And I should not see "Welcome, citizen1!"
     And I should be on user signup page
+
+  @javascript
+  Scenario: Short password warning disappears with correct length
+    Given I am on user signup page
+    When I fill in form with short password
+    Then I should see "Password Too SHORT"
+    When I fill in "password" with "ra88bit"
+    Then I should not see "Password Too SHORT"
 
   Scenario: User cannot signup with an existing username
     Given I sign up

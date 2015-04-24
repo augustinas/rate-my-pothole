@@ -6,16 +6,19 @@ $(document).ready(function(){
       return false;
     });
 
-  $('#new_password_confirm').focus(function(){
+  $('#new_password_confirm').keyup(function(){
     if ($('#new_password').val() !== $('#new_password_confirm').val()) {
-      // $('#new_password_confirm').css({"background-color": "#FF8080", "color": "white"})
-    $('#match-alert').text("Passwords Don't Match");
-    };
+      $('#match-alert').text("Passwords Don't Match");
+    } else {
+      $('#match-alert').text("");
+    }
   });
 
-  $('#new_password').blur(function() {
+  $('#new_password').keyup(function() {
     if ($('#new_password').val().length < 6) {
       $('#length-alert').text("Password Too SHORT");
+    } else {
+      $('#length-alert').text("");
     }
   });
 
