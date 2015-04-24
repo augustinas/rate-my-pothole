@@ -8,25 +8,26 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'sinatra-partial'
 gem 'rack-flash3'
+gem 'thin'
+gem 'rake'
+gem 'rspec'
+gem 'rubocop'
+gem 'rubocop-rspec'
+gem 'capybara'
+gem 'database_cleaner'
+gem 'cucumber-sinatra'
+gem 'cucumber'
+gem 'timecop'
+gem 'jasmine'
 gem 'selenium-webdriver'
-gem 'capybara-webkit'
+# gem 'capybara-webkit'
+# group :development do
 
-group :development do
-  gem 'thin'
-end
+# end
 
-group :test do
-  gem 'rake'
-  gem 'rspec'
-  gem 'rubocop'
-  gem 'rubocop-rspec'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'cucumber-sinatra'
-  gem 'cucumber'
-  gem 'timecop'
-  gem 'jasmine'
-end
+# group :test do
+
+# end
 
 
 

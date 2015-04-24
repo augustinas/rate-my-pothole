@@ -1,33 +1,18 @@
-<script>
-  $(document).ready(function() {
-    $('#new_password_confirm').focus(function(){
-      if ($('#new_password').val() !== $('#new_password_confirm').val()) {
-        // $('#new_password_confirm').css({"background-color": "#FF8080", "color": "white"})
-      $('#match-alert').text("Passwords Don't Match");
-      };
-    });
-    $('#new_password').blur(function() {
-      if ($('#new_password').val().length < 6) {
-        $('#length-alert').text("Password Too SHORT");
-      }
-    });
-  });
-</script>
-
 <form id="new_user" action="/users" method="post" class="user-forms">
-  <label for="new_username">Username</label>
+  <label class="user-forms__label" for="new_username">Username</label>
   <input name="username" type="text" id="new_username" placeholder="Choose a Username" class="user-forms__input">
 
-  <label for="new_email">Email</label>
+  <label class="user-forms__label" for="new_email">Email</label>
   <input name="email" type="email" id="new_email" placeholder="Email" class="user-forms__input">
 
-  <label for="new_password">Password</label>
+  <label class="user-forms__label" for="new_password">Password</label>
   <input name="password" type="password" id="new_password" placeholder="Password" class="user-forms__input">
   <div id="length-alert" class="user-forms__alert" hidden>Password Too SHORT</div>
-  <label for="new_password_confirm">Confirm Password</label>
-  <input name="password_confirmation" type="password" id="new_password_confirm" placeholder="Confirm Password" class="user-forms__input user-forms__input--confirm">
+
+  <label class="user-forms__label" for="new_password_confirm">Confirm Password</label>
+  <input name="password_confirmation" type="password" id="new_password_confirm" placeholder="Confirm Password" class="user-forms__input">
   <div id="match-alert" class="user-forms__alert" hidden>Passwords Don't Match</div>
 
-  <button>Register</button>
+  <button class="user-forms__button">Register</button>
 
 </form>
