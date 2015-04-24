@@ -10,7 +10,6 @@ Gmaps.prototype.initialize = function() {
   }
   this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   // this.centerMap("Reading Rd, London, UK");
-  // this.markMap("LS9 8PA");
 };
 
 Gmaps.prototype.centerMap = function(address, zoom) {
@@ -33,6 +32,7 @@ Gmaps.prototype.markMap = function(address) {
         map: this.map,
         position: results[0].geometry.location
       });
+      console.log(marker)
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
@@ -42,10 +42,21 @@ Gmaps.prototype.markMap = function(address) {
 Gmaps.prototype.markMapCoord = function(lat, lng) {
   var marker = new google.maps.Marker({
     map: this.map,
-    position: {lat: lat, lng: lng}
+    position: new google.maps.LatLng(54.0,-2.5)
   });
+  console.log(marker)
 };
 
 var gmaps = new Gmaps();
 
+marks = function(){
+  gmaps.markMap("London")
+  gmaps.markMap("Leeds")
+}
+
 google.maps.event.addDomListener(window, 'load', gmaps.initialize);
+google.maps.event.addDomListener(gmaps, 'tilesloaded', marks());
+// google.maps.event.addDomListener(gmaps, 'tilesloaded', gmaps.markMap("Leeds"));
+// gmaps.markMap("LS9 8PA");
+// gmaps.markMap("Bournemouth")
+

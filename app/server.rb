@@ -5,6 +5,7 @@ require 'json'
 require_relative 'data_mapper_setup'
 require_relative 'helpers/user_management'
 require_relative 'helpers/rating_management'
+require_relative 'helpers/gmaps'
 
 class RateMyPothole < Sinatra::Base
 
@@ -12,7 +13,7 @@ class RateMyPothole < Sinatra::Base
   use Rack::Flash
   set :session_secret, 'top secret'
 
-  helpers UserManagement, RatingManagement
+  helpers UserManagement, RatingManagement, MapMarkers
 
   get '/' do
     potholes = Pothole.all.sort do |x, y|
