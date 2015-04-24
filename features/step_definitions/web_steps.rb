@@ -53,7 +53,7 @@ end
 Given(/^I sign up as "([^"]*)"$/) do |name|
   step 'I am on the homepage'
   step 'I press "Sign up"'
-  fill_in_form(name: name)
+  fill_in_form(name: name, email: "#{name}@emailsRus.com")
   step 'I press "Register"'
 end
 
