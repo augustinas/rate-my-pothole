@@ -15,27 +15,54 @@ module WithinHelpers
     locator ? within(locator) { yield } : yield
   end
 
+  def fill_in_form(details = {})
+    details = default_details.merge(details)
+    step "I fill in \"username\" with \"#{details[:name]}\""
+    step "I fill in \"email\" with \"#{details[:email]}\""
+    step "I fill in \"password\" with \"#{details[:password]}\""
+    step "I fill in \"password_con"\
+    "firmation\" with \"#{details[:password_confirmation]}\""
+  end
+
+  def default_details
+    {
+      name: 'citizen1',
+      email: 'angry@citizen.com',
+      password: 'ra88it',
+      password_confirmation: 'ra88it'
+    }
+  end
+
 end
 World(WithinHelpers)
 
 Given(/^I sign up$/) do
   step 'I am on the homepage'
   step 'I press "Sign up"'
-  step 'I fill in "username" with "citizen1"'
-  step 'I fill in "email" with "angry@citizen.com"'
-  step 'I fill in "password" with "ra88it"'
-  step 'I fill in "password_confirmation" with "ra88it"'
+  fill_in_form
+  step 'I press "Register"'
+end
+
+Given(/^I sign up with the same email$/) do
+  step 'I am on the homepage'
+  step 'I press "Sign up"'
+  fill_in_form(name: 'citizen2')
   step 'I press "Register"'
 end
 
 Given(/^I sign up as "([^"]*)"$/) do |name|
   step 'I am on the homepage'
   step 'I press "Sign up"'
-  step "I fill in \"username\" with \"#{name}\""
-  step "I fill in \"email\" with \"#{name}@citizen.com\""
-  step 'I fill in "password" with "ra88it"'
-  step 'I fill in "password_confirmation" with "ra88it"'
+  fill_in_form(name: name)
   step 'I press "Register"'
+end
+
+When(/^I fill in form with mismatching passwords$/) do
+  fill_in_form(password_confirmation: 'b')
+end
+
+When(/^I fill in form with short password$/) do
+  fill_in_form(password_confirmation: 'rat', password: 'rat')
 end
 
 Given(/^I post a pothole$/) do
@@ -48,7 +75,9 @@ Given(/^I post a pothole$/) do
   step 'I see "Leeds Rd" within ".pothole-list__item"'
 end
 
-Given(/^it is currently (\d+) days later$/) do |days|
+Given(
+  /^I step in my time machine and travel (\d+) days into the distant future$/
+) do |days|
   Timecop.freeze(Date.today + days.to_i)
 end
 
