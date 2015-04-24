@@ -56,6 +56,7 @@ marks = function(){
 
 google.maps.event.addDomListener(window, 'load', gmaps.initialize);
 google.maps.event.addDomListener(gmaps, 'tilesloaded', marks());
+google.maps.event.trigger(gmaps, 'resize');
 // google.maps.event.addDomListener(gmaps, 'tilesloaded', gmaps.markMap("Leeds"));
 // gmaps.markMap("LS9 8PA");
 // gmaps.markMap("Bournemouth")
