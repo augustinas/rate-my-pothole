@@ -1,22 +1,10 @@
 .map-canvas {
   height: 90%;
-  width: 95%;
+  width: 100%;
   margin: auto;
   padding: 0;
   float: left;
  }
-
-.homepage-right {
-  height: 100%;
-  float: right;
-  width: 40%;
-}
-
-.homepage-left {
-  height: 100%;
-  width: 60%;
-  float: left;
-}
 
 html, .wrapper, .container {
   height: 100%;
@@ -36,7 +24,6 @@ button {
 /*Header*/
 
 .header {
-  height: 3em;
   width: 100%;
   display: inline-block;
   background-color: white;
@@ -61,17 +48,6 @@ button {
   display: inline-block;
 }
 
-.homepage-header {
-  color: black;
-  background-color: yellow;
-  opacity: 0.5;
-  font: arial;
-  font-size: 1.75em;
-  text-align: center;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-}
-
 .report-pothole {
   display: inline-block;
 }
@@ -89,6 +65,32 @@ button {
   margin:1.5em auto;
   display: inline-block;
 }
+
+/*Homepage*/
+
+.homepage-header {
+  color: black;
+  background-color: yellow;
+  opacity: 0.5;
+  font: arial;
+  font-size: 1.75em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.homepage-right {
+  height: 100%;
+  float: right;
+  width: 40%;
+}
+
+.homepage-left {
+  height: 100%;
+  width: 60%;
+  float: left;
+}
+
 
 .center-container {
   margin: 0 auto;
@@ -127,10 +129,26 @@ button {
 
 /*Town Listing*/
 
-.town-header {
+.town__header {
   color: white;
   text-align: center;
   font-size: 2em;
+
+  color: black;
+  background-color: yellow;
+  opacity: 0.5;
+  font: arial;
+  font-size: 1.75em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  text-transform: capitalize;
+
+}
+
+.town__map {
+  height: 30%;
+  width: 100%;
 }
 
 .town-listing {
@@ -181,7 +199,8 @@ button {
   border-width: 1px;
   text-align: center;
   width: 75%;
-  margin: 3em auto;
+  margin: auto;
+  margin-bottom: 2em;
 }
 
 .pothole-list__item {

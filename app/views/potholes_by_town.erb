@@ -1,2 +1,11 @@
-<h2 class='town-header'><%= params[:town] %></h2>
+ <div class="town__map">
+  <div class="map-canvas" id="map-canvas"></div>
+</div>
+<h2 class='town__header'><%= params[:town] %></h2>
 <%= erb :'potholes/_pothole_list', locals: { :potholes => @potholes } %>
+
+<script type="text/javascript">
+  $(document).ready( function() {
+    gmaps.centerMap("<%= params[:town] %>", 12);
+  });
+</script>

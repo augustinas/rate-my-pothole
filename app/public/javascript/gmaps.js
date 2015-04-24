@@ -13,11 +13,12 @@ Gmaps.prototype.initialize = function() {
   // this.markMap("LS9 8PA");
 };
 
-Gmaps.prototype.centerMap = function(address) {
+Gmaps.prototype.centerMap = function(address, zoom) {
   this.geocoder = new google.maps.Geocoder();
   this.geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       this.map.setCenter(results[0].geometry.location);
+      this.map.setZoom(zoom);
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
