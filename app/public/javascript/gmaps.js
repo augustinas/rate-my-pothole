@@ -5,8 +5,8 @@ var Gmaps = function() {
 
 Gmaps.prototype.initialize = function() {
   var mapOptions = {
-  zoom: 8,
-  center: {lat: -33.8666, lng: 151.1958}
+  zoom: 6,
+  center: {lat: 54.0, lng: -2.5}
   }
   this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   // this.centerMap("Reading Rd, London, UK");

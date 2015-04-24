@@ -9,5 +9,11 @@
     <button class="view-by-town__button">View by town</button>
   </form>
 </div>
-<h2 class="homepage-header">Trending Potholes</h2>
-<%= erb :'potholes/_pothole_list', locals: { potholes: potholes } %>
+<div class="homepage-left">
+  <h2 class="homepage-header">Trending</h2>
+  <h2 class="homepage-header">Potholes</h2>
+  <%= erb :'potholes/_pothole_list', locals: { potholes: potholes } %>
+</div>
+<div class="homepage-right">
+  <div class="map-canvas" id="map-canvas"></div>
+</div>

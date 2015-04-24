@@ -1,4 +1,22 @@
-#map-canvas { height: 50%; width: 50%; margin: auto; padding: 0;}
+.map-canvas {
+  height: 90%;
+  width: 95%;
+  margin: auto;
+  padding: 0;
+  float: left;
+ }
+
+.homepage-right {
+  height: 100%;
+  float: right;
+  width: 40%;
+}
+
+.homepage-left {
+  height: 100%;
+  width: 60%;
+  float: left;
+}
 
 html, .wrapper, .container {
   height: 100%;
@@ -43,14 +61,15 @@ button {
   display: inline-block;
 }
 
-/*Joes Contributions*/
-
 .homepage-header {
-  color: yellow;
+  color: black;
+  background-color: yellow;
+  opacity: 0.5;
   font: arial;
-  font-size: 2em;
-  text-decoration: underline;
-  margin-left: 27%;
+  font-size: 1.75em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-weight: bold;
 }
 
 .report-pothole {
@@ -60,7 +79,7 @@ button {
 .view-by-town {
   display: inline-block;
 }
-/*NOT MADNESS STILL*/
+
 .report-pothole__button {
   margin: 1.5em auto;
   display: inline-block;
@@ -128,9 +147,35 @@ button {
 
 /*Pothole listing*/
 
+.pothole-list__content {
+  color: white;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.pothole-list__content--location {
+  color: white;
+  text-transform: capitalize;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.pothole-list__content form {
+  font-weight: normal;
+  display: inline-block;
+  float: right;
+}
+
+.votes {
+  color: white;
+  font-weight: normal;
+  display: inline-block;
+}
+
+
 .pothole-list__item, .pothole-form {
-  background-color: white;
-  opacity: 0.8;
+  background-color: rgba(255, 247, 0, 0.2);
   border-radius: 1em;
   border-color: black;
   border-width: 1px;
@@ -141,7 +186,7 @@ button {
 
 .pothole-list__item {
   padding: 1em 2em;
-  width: 40%;
+  width: 75%;
   text-align: left;
 }
 
@@ -191,10 +236,11 @@ button {
 .footer {
   background-color: white;
   opacity: 0.8;
+  clear: both;
 }
 
 .footer__logo {
   display: block;
   height: 3.5em;
-  margin: 0.5em auto;
+  margin: auto;
 }
