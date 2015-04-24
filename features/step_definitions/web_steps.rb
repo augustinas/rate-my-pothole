@@ -81,6 +81,10 @@ Given(
   Timecop.freeze(Date.today + days.to_i)
 end
 
+Given(/^I turn off the timecop$/) do
+  Timecop.return
+end
+
 Then(/^"([^"]*)" should be before "([^"]*)"$/) do |arg1, arg2|
   arg1.should appear_before(arg2)
 end

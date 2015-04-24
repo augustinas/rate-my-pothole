@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+  var $matchAlert = $("#match-alert");
+  var $lengthAlert = $("#length-alert");
+
   $('.user-forms--report-pothole').on('submit', function(event) {
       event.preventDefault();
       addressToCoords($('#street-name').val(), $('#town-name').val());
@@ -8,17 +11,17 @@ $(document).ready(function(){
 
   $('#new_password_confirm').keyup(function(){
     if ($('#new_password').val() !== $('#new_password_confirm').val()) {
-      $('#match-alert').text("Passwords Don't Match");
+      $matchAlert.slideDown(600);
     } else {
-      $('#match-alert').text("");
+      $matchAlert.slideUp(600);
     }
   });
 
   $('#new_password').keyup(function() {
     if ($('#new_password').val().length < 6) {
-      $('#length-alert').text("Password Too SHORT");
+      $lengthAlert.slideDown(600);
     } else {
-      $('#length-alert').text("");
+      $lengthAlert.slideUp(600);
     }
   });
 

@@ -24,3 +24,4 @@ Feature: Pothole Ordering.
     Given I step in my time machine and travel 10 days into the distant future
     And I press "Flag" on pothole "2"
     Then "Another Rd" should be before "Leeds Rd"
+    Given I turn off the timecop
