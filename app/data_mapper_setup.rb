@@ -1,6 +1,7 @@
 env = ENV['RACK_ENV'] || 'development'
+local = "postgres://localhost/pothole_#{env}"
 
-DataMapper.setup(:default, "postgres://localhost/pothole_#{env}")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || local)
 # Add the model requires
 require './app/models/user'
 require './app/models/pothole'
