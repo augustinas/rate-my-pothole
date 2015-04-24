@@ -1,6 +1,13 @@
+#map-canvas { height: 50%; width: 50%; margin: auto; padding: 0;}
+
+html, .wrapper, .container {
+  height: 100%;
+}
+
 body {
   background-image: url("/images/tarmac2.jpg");
   font-family: "Helvetica Neue", Helvetica, sans-serif;
+  height: 100%;
 }
 
 button {
