@@ -1,7 +1,9 @@
 class RateMyPothole < Sinatra::Base
+
   post '/flag/:pothole' do
-    vote = Vote.new(user_id: session[:user_id],
-                    pothole_id: params[:pothole])
+    vote = Vote.first_or_new(
+      user_id: session[:user_id],
+      pothole_id: params[:pothole])
     flash[:errors] = vote.errors.full_messages unless vote.save
     redirect '/'
   end
@@ -12,4 +14,5 @@ class RateMyPothole < Sinatra::Base
     flash[:errors] = vote.errors.full_messages unless vote.destroy
     redirect '/'
   end
+
 end
