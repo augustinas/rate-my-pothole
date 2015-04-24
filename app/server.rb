@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
+require 'json'
 require_relative 'data_mapper_setup'
 
 module UserManagement
@@ -142,6 +143,16 @@ class RateMyPothole < Sinatra::Base
       pothole.town.name == params[:town]
     end
     erb :potholes_by_town
+  end
+
+  get '/marks' do
+    potholes = Pothole.all
+    puts potholes
+    hash = { potholes: [] }
+    potholes.each do |pothole|
+      hash[:data] << { location: pothole.location, lat: pothole.lat, lng: pothole.long }
+    end
+    hash.to_json
   end
 
   # start the server if ruby file executed directly

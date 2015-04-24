@@ -38,9 +38,10 @@ Gmaps.prototype.markMap = function(address) {
   });
 };
 
-Gmaps.prototype.getLatLong = function(address) {
-  $.ajax({
-    url: 'http://maps.googleapis.com/maps/api/geocode/json'
+Gmaps.prototype.markMapCoord = function(lat, lng) {
+  var marker = new google.maps.Marker({
+    map: this.map,
+    position: {lat: lat, lng: lng}
   });
 };
 

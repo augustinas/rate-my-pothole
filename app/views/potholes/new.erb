@@ -1,3 +1,4 @@
+
 <% if current_user %>
   <form class="user-forms user-forms--report-pothole" action="/potholes" method="post">
     <label for="street-name">Street Name</label>
@@ -22,17 +23,22 @@
       }
     });
   };
-  $('.user-forms--report-pothole').on('submit', function(event) {
-    event.preventDefault();
+
+  var addressToCoords = function(street, town) {
     $.ajax({
       url: "https://maps.googleapis.com/maps/api/geocode/json",
       data: {
-        address: $('#street-name').val() + '+' + $('#town-name').val()
+        address: street + '+' + town
       },
       success: function(data) {
         postLocationData(data.results[0].geometry.location);
       }
     });
+  };
+
+  $('.user-forms--report-pothole').on('submit', function(event) {
+    event.preventDefault();
+    addressToCoords($('#street-name').val(), $('#town-name').val());
     return false;
-  });
+});
 </script>

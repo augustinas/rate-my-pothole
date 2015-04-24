@@ -24,12 +24,6 @@ Capybara.server do |app, port|
   Rack::Handler::Thin.run(app, Port: port)
 end
 
-Capybara.register_driver :webkit_allow do |app|
-  driver = Capybara::Webkit::Driver.new(app)
-  driver.allow_url 'maps.googleapis.com'
-  driver
-end
-
 Capybara.app = RateMyPothole
 
 Capybara.javascript_driver = :selenium
