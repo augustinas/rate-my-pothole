@@ -9,6 +9,8 @@
 <script type="text/javascript">
 $(document).ready( function() {
   var updatePothole = function() {
+    $('.pothole-list__content__form__button--flag').off('click');
+    $('.pothole-list__content__form__button--unflag').off('click');
     $('.pothole-list__content__form__button--flag').on('click', function(event) {
       event.preventDefault;
       var $clickedButton = $(this)
