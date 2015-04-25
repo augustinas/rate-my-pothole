@@ -10,7 +10,14 @@ Feature: Pothole Flagging.
   Scenario: A pothole can be flagged.
             Given I am on the homepage
             And I press "Flag"
-            Then I should see "Concerned citizens : 1"
+            Then I should see "Concerned Citizens : 1"
+            And I should not see "Flag"
+
+@javascript
+Scenario: A pothole can be flagged.
+            Given I am on the homepage
+            And I press "Flag"
+            Then I should see "Concerned Citizens : 1"
             And I should not see "Flag"
 
   Scenario: A pothole can not be unflagged before flagged.
@@ -20,9 +27,9 @@ Feature: Pothole Flagging.
   Scenario: I can flag on a pothole then unflag it
             Given I am on the homepage
             And I press "Flag"
-            Then I should see "Concerned citizens : 1"
+            Then I should see "Concerned Citizens : 1"
             And I should not see "Flag"
             And I press "Unflag"
-            Then I should see "Concerned citizens : 0"
+            Then I should see "Concerned Citizens : 0"
             And I should not see "Unflag"
             And I should see "Flag"

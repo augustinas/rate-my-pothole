@@ -17,7 +17,7 @@ class RateMyPothole < Sinatra::Base
       flash[:notice] = "Welcome, #{user.username}!"
       redirect to '/'
     else
-      flash[:errors] = ["Username or password are incorrect"]
+      flash.now[:errors] = ["Username or password are incorrect"]
       erb :'sessions/new'
     end
   end

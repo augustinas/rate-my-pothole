@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/augustinas/rate-my-pothole.svg?branch=master)](https://travis-ci.org/augustinas/rate-my-pothole)
+
 #Lab Week Plan#
 Dan, Gus, Joe and Rob
 
