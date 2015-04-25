@@ -1,22 +1,45 @@
 <div class="pothole-list">
   <% potholes.each do |pothole| %>
     <div class="pothole-list__item">
-      <div class="pothole-list__content--location">
-          <%= "#{pothole.location}, #{pothole.town.name}, #{pothole.lat}, #{pothole.long}" %>
-        </div>
-        <div class="pothole-list__content">
-        <div class="votes">Concerned citizens : <%= total_flags(pothole) %></div>
-        <% if current_user && !user_flagged?(session[:user_id], pothole) %>
-          <form method="post" class=".pothole-list__content__form" action="/flag/<%= pothole.id %>">
-              <button class="pothole-list__item__Flag-button--<%= pothole.id %>">Flag</button>
-          </form>
-        <% elsif current_user %>
-          <form class=".pothole-list__content__form" method="post" action="/unflag/<%= pothole.id %>">
-            <button class="pothole-list__item__Unflag-button--<%= pothole.id %>">Unflag</button>
-          </form>
-        <% end %>
-      </div>
+      <%= erb :'potholes/_single_pothole', locals: { pothole: pothole }, layout: false %>
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+$(document).ready( function() {
+  var updatePothole = function() {
+    $('.pothole-list__content__form__button--flag').on('click', function(event) {
+      event.preventDefault;
+      var $clickedButton = $(this)
+      $.ajax({
+        url: '/flag/' + $clickedButton.data('id'),
+        method: 'POST',
+        data: $($clickedButton).data('id'),
+        success: function(single_pothole) {
+          $($clickedButton).closest('.pothole-list__item').html(single_pothole);
+          updatePothole()
+        }
+    })
+    return false;
+   });
+
+    $('.pothole-list__content__form__button--unflag').on('click', function(event) {
+      event.preventDefault;
+      var $clickedButton = $(this)
+      $.ajax({
+        url: '/unflag/' + $clickedButton.data('id'),
+        method: 'POST',
+        data: $($clickedButton).data('id'),
+        success: function(single_pothole) {
+          $($clickedButton).closest('.pothole-list__item').html(single_pothole);
+          updatePothole()
+        }
+    })
+    return false;
+   });
+  };
+  updatePothole();
+});
+</script>
 

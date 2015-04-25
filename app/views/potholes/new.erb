@@ -1,6 +1,6 @@
 
 <% if current_user %>
-  <form class="user-forms user-forms--report-pothole">
+  <form class="user-forms user-forms--report-pothole" action="/potholes" method="post">
     <label class="user-forms__label" for="street-name">Street Name</label>
     <input class="user-forms__input" id="street-name" type="text" name="street_name" placeholder="Street Name">
     <label class="user-forms__label" for="town-name">Town Name</label>

@@ -45,5 +45,4 @@ Gmaps.prototype.markMapCoord = function(lat, lng) {
     position: new google.maps.LatLng(lat,lng),
     title: 'test for dan'
   });
-  console.log(lat);
 };
