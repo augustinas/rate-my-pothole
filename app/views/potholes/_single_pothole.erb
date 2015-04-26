@@ -1,0 +1,16 @@
+<div class="pothole-list__content--location">
+  <%= "#{pothole.location}, #{pothole.town.name}, #{pothole.lat}, #{pothole.long}" %>
+</div>
+
+<div class="pothole-list__content">
+  <div class="votes">
+    Concerned Citizens : <%= total_flags(pothole) %>
+  </div>
+  <form method="post" class=".pothole-list__content__form" action="/flag/<%= pothole.id %>">
+    <% if current_user && !user_flagged?(session[:user_id], pothole) %>
+        <button class="pothole-list__content__form__button--flag pothole-list__item__Flag-button--<%= pothole.id %>" data-id="<%= pothole.id %>">Flag</button>
+    <% elsif current_user %>
+        <button formaction='/unflag/<%= pothole.id %>' class="pothole-list__content__form__button--unflag pothole-list__item__Unflag-button--<%= pothole.id %>" data-id="<%= pothole.id %>">Unflag</button>
+    <% end %>
+  </form>
+</div>

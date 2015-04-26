@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/augustinas/rate-my-pothole.svg?branch=master)](https://travis-ci.org/augustinas/rate-my-pothole)
+
 #Lab Week Plan#
 Dan, Gus, Joe and Rob
 
@@ -70,22 +72,13 @@ Fri - Polish
 
 -----------
 
-Extra Tasks:
-
-#### DONE:
-
-* Rake tasks
-* Datamapper tests clean db after each
-* Buttons on correct pages
-* Change tests to get rid of "hello world" text
-
 #### TO DO:
 
-* Signin unique and are there validations
+* Bug where incorrect username and password warning persists after logging in
+* Make an ajax call to vote and update page
+* Label potholes on map
+* Link to town on each pothole post
+* Style buttons
 * Footer stick to bottom
-only if logged in
-* Style posts
-* make an ajax call to vote and update page
-
 
 
